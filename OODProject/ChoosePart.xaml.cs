@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace OODProject
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for chooseCPU.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChoosePart : Window
     {
-        //Main Window code
-        public MainWindow()
+        public ChoosePart()
         {
             InitializeComponent();
-        }
-
-        private void btnCPU_Click(object sender, RoutedEventArgs e)
-        {
-            //ChooseCPU chooseCPU = new ChooseCPU();
         }
     }
 }
