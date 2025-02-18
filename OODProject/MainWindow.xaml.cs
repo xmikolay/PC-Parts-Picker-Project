@@ -25,5 +25,10 @@ namespace OODProject
         {
             InitializeComponent();
         }
+
+        private void btnCPU_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseCPU chooseCPU = new ChooseCPU();
+        }
     }
 }
