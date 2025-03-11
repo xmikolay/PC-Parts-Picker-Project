@@ -123,6 +123,10 @@
     <Compile Include="Migrations\202503111928563_ChangedMotherboardClassandCaseClass.Designer.cs">
       <DependentUpon>202503111928563_ChangedMotherboardClassandCaseClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503111937575_AddedCasesStorageCoolers.cs" />
+    <Compile Include="Migrations\202503111937575_AddedCasesStorageCoolers.Designer.cs">
+      <DependentUpon>202503111937575_AddedCasesStorageCoolers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503111928563_ChangedMotherboardClassandCaseClass.resx">
       <DependentUpon>202503111928563_ChangedMotherboardClassandCaseClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503111937575_AddedCasesStorageCoolers.resx">
+      <DependentUpon>202503111937575_AddedCasesStorageCoolers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -15,6 +15,7 @@ namespace PCPartsDatabaseManagement
 
             using (db)
             {
+                #region Create Databse
                 //CPU cpu1 = new CPU { CpuID = 1, Name = "Intel Core Ultra 9 285K", Platform = "LGA1851", Cores = 24, Threads = 32, BaseClock = 3.2, BoostClock = 6.0, IncludesCooler = false, Architecture = "Arrow Lake", TDP = 125, Price = 700m, Image = "Images/Core 9 285k" };
                 //CPU cpu2 = new CPU { CpuID = 2, Name = "AMD Ryzen 9 9950X3D", Platform = "AM5", Cores = 16, Threads = 32, BaseClock = 3.5, BoostClock = 5.7, IncludesCooler = false, Architecture = "Zen 5 3D V-Cache", TDP = 170, Price = 650m, Image = "Images/9950x3d" };
                 //CPU cpu3 = new CPU { CpuID = 3, Name = "Intel Core Ultra 7 265K", Platform = "LGA1851", Cores = 20, Threads = 28, BaseClock = 3.0, BoostClock = 5.5, IncludesCooler = false, Architecture = "Arrow Lake", TDP = 125, Price = 400m, Image = "Images/Core 7 265k" };
@@ -95,6 +96,69 @@ namespace PCPartsDatabaseManagement
 
                 //Console.WriteLine("Saved to Database");
 
+                //Case case1 = new Case { CaseID = 1, Name = "Lian Li PC-O11 Dynamic", FormFactor = "ATX", MaxGPULength = 420, MaxCoolerHeight = 155, FansIncluded = "None", Price = 139.99m, Image = "Images/PC-O11Dynamic" };
+                //Case case2 = new Case { CaseID = 2, Name = "Fractal Design Meshify 2", FormFactor = "ATX", MaxGPULength = 440, MaxCoolerHeight = 185, FansIncluded = "3x 140mm", Price = 159.99m, Image = "Images/Meshify2" };
+                //Case case3 = new Case { CaseID = 3, Name = "NZXT H7 Flow", FormFactor = "ATX", MaxGPULength = 400, MaxCoolerHeight = 185, FansIncluded = "2x 120mm", Price = 129.99m, Image = "Images/H7Flow" };
+                //Case case4 = new Case { CaseID = 4, Name = "Corsair 4000D Airflow", FormFactor = "ATX", MaxGPULength = 360, MaxCoolerHeight = 170, FansIncluded = "2x 120mm", Price = 104.99m, Image = "Images/4000DAirflow" };
+                //Case case5 = new Case { CaseID = 5, Name = "Cooler Master NR200P", FormFactor = "Mini-ITX", MaxGPULength = 330, MaxCoolerHeight = 155, FansIncluded = "2x 120mm", Price = 119.99m, Image = "Images/NR200P" };
+                //Case case6 = new Case { CaseID = 6, Name = "Phanteks Eclipse G360A", FormFactor = "ATX", MaxGPULength = 400, MaxCoolerHeight = 162, FansIncluded = "3x 120mm", Price = 99.99m, Image = "Images/G360A" };
+
+                //db.Cases.Add(case1);
+                //db.Cases.Add(case2);
+                //db.Cases.Add(case3);
+                //db.Cases.Add(case4);
+                //db.Cases.Add(case5);
+                //db.Cases.Add(case6);
+
+                //Console.WriteLine("Added Cases to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
+
+                //Storage storage1 = new Storage { StorageID = 1, Name = "Samsung 990 Pro 2TB", Type = "NVMe M.2", Capacity = 2000, Interface = "PCIe 4.0 x4", Price = 179.99m, Image = "Images/990Pro2TB" };
+                //Storage storage2 = new Storage { StorageID = 2, Name = "Western Digital Black SN850X 1TB", Type = "NVMe M.2", Capacity = 1000, Interface = "PCIe 4.0 x4", Price = 89.99m, Image = "Images/SN850X1TB" };
+                //Storage storage3 = new Storage { StorageID = 3, Name = "Crucial T700 2TB", Type = "NVMe M.2", Capacity = 2000, Interface = "PCIe 5.0 x4", Price = 289.99m, Image = "Images/T7002TB" };
+                //Storage storage4 = new Storage { StorageID = 4, Name = "Sabrent Rocket 4 Plus 4TB", Type = "NVMe M.2", Capacity = 4000, Interface = "PCIe 4.0 x4", Price = 649.99m, Image = "Images/Rocket4Plus4TB" };
+                //Storage storage5 = new Storage { StorageID = 5, Name = "Kingston Fury Renegade 1TB", Type = "NVMe M.2", Capacity = 1000, Interface = "PCIe 4.0 x4", Price = 99.99m, Image = "Images/FuryRenegade1TB" };
+                //Storage storage6 = new Storage { StorageID = 6, Name = "ADATA XPG Gammix S70 Blade 2TB", Type = "NVMe M.2", Capacity = 2000, Interface = "PCIe 4.0 x4", Price = 159.99m, Image = "Images/GammixS702TB" };
+
+                //db.Storages.Add(storage1);
+                //db.Storages.Add(storage2);
+                //db.Storages.Add(storage3);
+                //db.Storages.Add(storage4);
+                //db.Storages.Add(storage5);
+                //db.Storages.Add(storage6);
+
+                //Console.WriteLine("Added Storage to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
+
+                //CPUCooler cooler1 = new CPUCooler { CPUCoolerID = 1, Name = "Corsair iCUE H150i ELITE LCD XT", Size = "360mm AIO", MaxTDP = 300, Price = 229.99m, Image = "Images/H150iELITEX" };
+                //CPUCooler cooler2 = new CPUCooler { CPUCoolerID = 2, Name = "NZXT Kraken X73 RGB", Size = "360mm AIO", MaxTDP = 280, Price = 199.99m, Image = "Images/KrakenX73" };
+                //CPUCooler cooler3 = new CPUCooler { CPUCoolerID = 3, Name = "ARCTIC Liquid Freezer II 280", Size = "280mm AIO", MaxTDP = 250, Price = 129.99m, Image = "Images/LiquidFreezer280" };
+                //CPUCooler cooler4 = new CPUCooler { CPUCoolerID = 4, Name = "Noctua NH-D15", Size = "Dual-Tower", MaxTDP = 250, Price = 109.99m, Image = "Images/NH-D15" };
+                //CPUCooler cooler5 = new CPUCooler { CPUCoolerID = 5, Name = "be quiet! Dark Rock Pro 4", Size = "Dual-Tower", MaxTDP = 250, Price = 89.99m, Image = "Images/DarkRockPro4" };
+                //CPUCooler cooler6 = new CPUCooler { CPUCoolerID = 6, Name = "Cooler Master Hyper 212 Black Edition", Size = "Single-Tower", MaxTDP = 180, Price = 49.99m, Image = "Images/Hyper212Black" };
+
+                //db.CPUCoolers.Add(cooler1);
+                //db.CPUCoolers.Add(cooler2);
+                //db.CPUCoolers.Add(cooler3);
+                //db.CPUCoolers.Add(cooler4);
+                //db.CPUCoolers.Add(cooler5);
+                //db.CPUCoolers.Add(cooler6);
+
+                //Console.WriteLine("Added Coolers to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
+
+                #endregion
+
+                #region Use if seeding is incorrect
                 //Using this to Clear CPU table after incorrect seeding
                 //
                 //using (var context = new PartData())
@@ -114,6 +178,7 @@ namespace PCPartsDatabaseManagement
                 //}
 
                 //Console.ReadLine();
+                #endregion
             }
         }
     }
