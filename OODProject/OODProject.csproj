@@ -115,6 +115,14 @@
     <Compile Include="Migrations\202503111900366_AddedRamToDb.Designer.cs">
       <DependentUpon>202503111900366_AddedRamToDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503111926575_ChangedGPUClassAndPSUClass.cs" />
+    <Compile Include="Migrations\202503111926575_ChangedGPUClassAndPSUClass.Designer.cs">
+      <DependentUpon>202503111926575_ChangedGPUClassAndPSUClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503111928563_ChangedMotherboardClassandCaseClass.cs" />
+    <Compile Include="Migrations\202503111928563_ChangedMotherboardClassandCaseClass.Designer.cs">
+      <DependentUpon>202503111928563_ChangedMotherboardClassandCaseClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -149,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503111900366_AddedRamToDb.resx">
       <DependentUpon>202503111900366_AddedRamToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503111926575_ChangedGPUClassAndPSUClass.resx">
+      <DependentUpon>202503111926575_ChangedGPUClassAndPSUClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503111928563_ChangedMotherboardClassandCaseClass.resx">
+      <DependentUpon>202503111928563_ChangedMotherboardClassandCaseClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

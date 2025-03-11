@@ -55,7 +55,7 @@ namespace OODProject
 
         public string MemoryType { get; set; }
 
-        public ICollection<GPU> CompatibleGPUs { get; set; }
+        //public ICollection<GPU> CompatibleGPUs { get; set; }
     }
 
     public class RAM
@@ -122,7 +122,7 @@ namespace OODProject
         public decimal Price { get; set; }
         public string Image { get; set; }
 
-        public ICollection<GPU> CompatibleGPUs { get; set; }
+        //public ICollection<GPU> CompatibleGPUs { get; set; }
     }
 
     public class Storage

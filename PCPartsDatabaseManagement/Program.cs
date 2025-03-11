@@ -75,12 +75,25 @@ namespace PCPartsDatabaseManagement
 
                 //Console.WriteLine("Saved to Database");
 
-                GPU gpu1 = new GPU { GpuID = 1, Name = "NVIDIA GeForce RTX 4090", MemoryType = "GDDR6X", MemorySize = 24, TDP = 450, Interface = "PCIe 4.0 x16", ExternalPower = "3x 8-pin (or 1x 16-pin)", GPULength = 304, Price = 1599.99m, PSURequirement = 850 };
-                GPU gpu2 = new GPU { GpuID = 2, Name = "NVIDIA GeForce RTX 4080 SUPER", MemoryType = "GDDR6X", MemorySize = 16, TDP = 320, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin (or 1x 16-pin)", GPULength = 305, Price = 999.99m, PSURequirement = 750 };
-                GPU gpu3 = new GPU { GpuID = 3, Name = "NVIDIA GeForce RTX 4070 Ti SUPER", MemoryType = "GDDR6X", MemorySize = 16, TDP = 285, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 285, Price = 799.99m, PSURequirement = 450 };
-                GPU gpu4 = new GPU { GpuID = 4, Name = "AMD Radeon RX 7900 XTX", MemoryType = "GDDR6", MemorySize = 24, TDP = 355, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 287, Price = 999.99m, PSURequirement = 850 };
-                GPU gpu5 = new GPU { GpuID = 5, Name = "AMD Radeon RX 7900 XT", MemoryType = "GDDR6", MemorySize = 20, TDP = 300, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 276, Price = 849.99m, PSURequirement = 750 };
-                GPU gpu6 = new GPU { GpuID = 6, Name = "AMD Radeon RX 7800 XT", MemoryType = "GDDR6", MemorySize = 16, TDP = 263, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 267, Price = 499.99m, PSURequirement = 700 };
+                //GPU gpu1 = new GPU { GpuID = 1, Name = "NVIDIA GeForce RTX 4090", MemoryType = "GDDR6X", MemorySize = 24, TDP = 450, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 304, Price = 3799.00m, PSURequirement = 850, Image ="Images/4090"};
+                //GPU gpu2 = new GPU { GpuID = 2, Name = "ASUS Strix GeForce RTX 4080 SUPER", MemoryType = "GDDR6X", MemorySize = 16, TDP = 320, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 358, Price = 1300.00m, PSURequirement = 850, Image = "Images/4080 super"};
+                //GPU gpu3 = new GPU { GpuID = 3, Name = "Gigabyte GeForce RTX 4070 Ti SUPER GAMING OC", MemoryType = "GDDR6X", MemorySize = 16, TDP = 285, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 300, Price = 1000.00m, PSURequirement = 750, Image = "Images/4070"};
+                //GPU gpu4 = new GPU { GpuID = 4, Name = "PowerColor Hellhound RX 7900 XTX", MemoryType = "GDDR6", MemorySize = 24, TDP = 355, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 320, Price = 999.99m, PSURequirement = 800, Image = "Images/7900xtx"};
+                //GPU gpu5 = new GPU { GpuID = 5, Name = "ASUS TUF Gaming Radeon RX 7900 XT", MemoryType = "GDDR6", MemorySize = 20, TDP = 300, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 352, Price = 849.99m, PSURequirement = 750, Image = "Images/7900xt"};
+                //GPU gpu6 = new GPU { GpuID = 6, Name = "XFX Speedster QICK319 Radeon RX 7800 XT", MemoryType = "GDDR6", MemorySize = 16, TDP = 263, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 335, Price = 550.99m, PSURequirement = 700, Image = "Images/7800xt"};
+
+                //db.GPUs.Add(gpu1);
+                //db.GPUs.Add(gpu2);
+                //db.GPUs.Add(gpu3);
+                //db.GPUs.Add(gpu4);
+                //db.GPUs.Add(gpu5);
+                //db.GPUs.Add(gpu6);
+
+                //Console.WriteLine("Added GPUS to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
 
                 //Using this to Clear CPU table after incorrect seeding
                 //
@@ -90,17 +103,17 @@ namespace PCPartsDatabaseManagement
                 //    {
                 //        context.Database.ExecuteSqlCommand("DELETE FROM CPUs");
 
-//        context.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('CPUs', RESEED, 0)");
+                //        context.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('CPUs', RESEED, 0)");
 
-//        Console.WriteLine("CPU table cleared and identity reseeded.");
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine("Error: " + ex.Message);
-//    }
-//}
+                //        Console.WriteLine("CPU table cleared and identity reseeded.");
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Console.WriteLine("Error: " + ex.Message);
+                //    }
+                //}
 
-//Console.ReadLine();
+                //Console.ReadLine();
             }
         }
     }
