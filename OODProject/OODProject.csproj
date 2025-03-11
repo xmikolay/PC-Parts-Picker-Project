@@ -111,6 +111,10 @@
     <Compile Include="Migrations\202503111331216_AddedMotherboards.Designer.cs">
       <DependentUpon>202503111331216_AddedMotherboards.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503111900366_AddedRamToDb.cs" />
+    <Compile Include="Migrations\202503111900366_AddedRamToDb.Designer.cs">
+      <DependentUpon>202503111900366_AddedRamToDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503111331216_AddedMotherboards.resx">
       <DependentUpon>202503111331216_AddedMotherboards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503111900366_AddedRamToDb.resx">
+      <DependentUpon>202503111900366_AddedRamToDb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

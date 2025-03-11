@@ -87,9 +87,10 @@ namespace OODProject
         public int GPULength { get; set; }
         public decimal Price { get; set; }
         public string Image { get; set; }
+        public int PSURequirement { get; set; }
 
-        public int PSURequirementID { get; set; }
-        public virtual PSU RequiredPSU { get; set; }
+        //public int PSURequirementID { get; set; }
+        //public virtual PSU RequiredPSU { get; set; }
     }
 
     public class PSU
@@ -105,7 +106,7 @@ namespace OODProject
         public decimal Price { get; set; }
         public string Image { get; set; }
 
-        public ICollection<GPU> CompatibleGPUs { get; set; }
+        //public ICollection<GPU> CompatibleGPUs { get; set; }
     }
 
     public class Case
