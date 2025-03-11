@@ -35,12 +35,25 @@ namespace PCPartsDatabaseManagement
 
                 //Console.WriteLine("Saved to Database");
 
-                Motherboard mb1 = new Motherboard { MotherboardID = 1, Name = "MSI MAG Z890 Tomahawk WIFI", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 365.00m, Image = "Images/MSI Z890 Tomahawk WIFI", MemoryType = "DDR5" };
-                Motherboard mb2 = new Motherboard { MotherboardID = 2, Name = "Gigabyte Z890M Gaming X", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "MATX", Price = 230.00m, Image = "Images/Gigabyte z890m", MemoryType = "DDR5" };
-                Motherboard mb3 = new Motherboard { MotherboardID = 3, Name = "MSI B760 GAMING PLUS WIFI", Platform = "LGA1700", Chipset = "B760", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 180.00m, Image = "Images/MSI B760 Gaming", MemoryType = "DDR5" };
-                Motherboard mb4 = new Motherboard { MotherboardID = 4, Name = "ASUS ROG Crosshair X870E Hero", Platform = "AM5", Chipset = "X870E", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 740.99m, Image = "Images/ROG Crosshair X870e", MemoryType = "DDR5" };
-                Motherboard mb5 = new Motherboard { MotherboardID = 5, Name = "ASUS TUF GAMING B650-PLUS WIFI", Platform = "AM5", Chipset = "B650", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 179.99m, Image = "Images/Asus tuf", MemoryType = "DDR5" };
-                Motherboard mb6 = new Motherboard { MotherboardID = 6, Name = "MSI MPG B550 GAMING CARBON WIFI", Platform = "AM4", Chipset = "B550", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 140.00m, Image = "Images/MSI B550", MemoryType = "DDR4" };
+                //Motherboard mb1 = new Motherboard { MotherboardID = 1, Name = "MSI MAG Z890 Tomahawk WIFI", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 365.00m, Image = "Images/MSI Z890 Tomahawk WIFI", MemoryType = "DDR5" };
+                //Motherboard mb2 = new Motherboard { MotherboardID = 2, Name = "Gigabyte Z890M Gaming X", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "MATX", Price = 230.00m, Image = "Images/Gigabyte z890m", MemoryType = "DDR5" };
+                //Motherboard mb3 = new Motherboard { MotherboardID = 3, Name = "MSI B760 GAMING PLUS WIFI", Platform = "LGA1700", Chipset = "B760", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 180.00m, Image = "Images/MSI B760 Gaming", MemoryType = "DDR5" };
+                //Motherboard mb4 = new Motherboard { MotherboardID = 4, Name = "ASUS ROG Crosshair X870E Hero", Platform = "AM5", Chipset = "X870E", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 740.99m, Image = "Images/ROG Crosshair X870e", MemoryType = "DDR5" };
+                //Motherboard mb5 = new Motherboard { MotherboardID = 5, Name = "ASUS TUF GAMING B650-PLUS WIFI", Platform = "AM5", Chipset = "B650", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 179.99m, Image = "Images/Asus tuf", MemoryType = "DDR5" };
+                //Motherboard mb6 = new Motherboard { MotherboardID = 6, Name = "MSI MPG B550 GAMING CARBON WIFI", Platform = "AM4", Chipset = "B550", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 140.00m, Image = "Images/MSI B550", MemoryType = "DDR4" };
+
+                //db.Motherboards.Add(mb1);
+                //db.Motherboards.Add(mb2);
+                //db.Motherboards.Add(mb3);
+                //db.Motherboards.Add(mb4);
+                //db.Motherboards.Add(mb5);
+                //db.Motherboards.Add(mb6);
+
+                //Console.WriteLine("Added Motherboards to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
 
             }
 
