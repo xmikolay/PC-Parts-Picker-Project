@@ -103,6 +103,10 @@
     <Compile Include="Migrations\202503111248065_FixID.Designer.cs">
       <DependentUpon>202503111248065_FixID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503111258558_HopefullyFixed.cs" />
+    <Compile Include="Migrations\202503111258558_HopefullyFixed.Designer.cs">
+      <DependentUpon>202503111258558_HopefullyFixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503111248065_FixID.resx">
       <DependentUpon>202503111248065_FixID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503111258558_HopefullyFixed.resx">
+      <DependentUpon>202503111258558_HopefullyFixed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
