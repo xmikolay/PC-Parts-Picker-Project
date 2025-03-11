@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -10,14 +11,18 @@ namespace OODProject
 {
     public class GenericPart
     {
+        [Key]
         public int GenericPartID { get; set; }
+
         public string PartName { get; set; }
         public decimal Price { get; set; } 
     }
 
     public class CPU
     {
+        [Key]
         public int CpuID { get; set; }
+
         public string Name { get; set; }
         public string Platform { get; set; }
         public int Cores { get; set; }
@@ -30,13 +35,15 @@ namespace OODProject
         public string Image { get; set; }
         public bool IncludesCooler { get; set; } 
         
-        public int CPUCoolerID { get; set; }
+        public int? CPUCoolerID { get; set; }
         public virtual CPUCooler CompatibleCooler { get; set; }
     }
 
     public class Motherboard
     {
+        [Key]
         public int MotherboardID { get; set; }
+
         public string Name { get; set; }
         public string Platform { get; set; }
         public string Chipset { get; set; }
@@ -53,7 +60,9 @@ namespace OODProject
 
     public class RAM
     {
+        [Key]
         public int RamID { get; set; }
+
         public string Name { get; set; }
         public string RAMType { get; set; }
         public int Modules { get; set; }
@@ -66,7 +75,9 @@ namespace OODProject
 
     public class GPU
     {
+        [Key]
         public int GpuID { get; set; }
+
         public string Name { get; set; }
         public string MemoryType { get; set; }
         public int MemorySize { get; set; }
@@ -83,7 +94,9 @@ namespace OODProject
 
     public class PSU
     {
+        [Key]
         public int PsuID { get; set; }
+
         public string Name { get; set; }
         public int Wattage { get; set; }
         public string Size { get; set; }
@@ -97,7 +110,9 @@ namespace OODProject
 
     public class Case
     {
+        [Key]
         public int CaseID { get; set; }
+
         public string Name { get; set; }
         public string FormFactor { get; set; }
         public int MaxGPULength { get; set; }
@@ -111,7 +126,9 @@ namespace OODProject
 
     public class Storage
     {
+        [Key]
         public int StorageID { get; set; }
+
         public string Name { get; set; }
         public string Type { get; set; }
         public int Capacity { get; set; }
@@ -122,7 +139,9 @@ namespace OODProject
 
     public class CPUCooler 
     {
+        [Key]
         public int CPUCoolerID { get; set ; }
+
         public string Name { get; set; }
         public string Size { get; set; }
         public int MaxTDP { get; set; }
