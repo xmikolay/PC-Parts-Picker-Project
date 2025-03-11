@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,8 @@ namespace OODProject
         public double BoostClock { get; set; }
         public string Architecture { get; set; }
         public int TDP { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
         public bool IncludesCooler { get; set; } 
         
         public int CPUCoolerID { get; set; }
@@ -40,6 +43,8 @@ namespace OODProject
         public int MaxMemoryCapacity { get; set; }
         public int MemorySlots { get; set; }
         public string FormFactor { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
 
         public string MemoryType { get; set; }
 
@@ -55,6 +60,8 @@ namespace OODProject
         public int Capacity { get; set; }
         public int Speed { get; set; }
         public int CASLatency { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
     }
 
     public class GPU
@@ -67,6 +74,8 @@ namespace OODProject
         public string Interface { get; set; }
         public string ExternalPower { get; set; }
         public int GPULength { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
 
         public int PSURequirementID { get; set; }
         public virtual PSU RequiredPSU { get; set; }
@@ -80,6 +89,8 @@ namespace OODProject
         public string Size { get; set; }
         public string Efficiency { get; set; }
         public string Modularity { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
 
         public ICollection<GPU> CompatibleGPUs { get; set; }
     }
@@ -92,6 +103,8 @@ namespace OODProject
         public int MaxGPULength { get; set; }
         public int MaxCoolerHeight { get; set; }
         public string FansIncluded { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
 
         public ICollection<GPU> CompatibleGPUs { get; set; }
     }
@@ -103,6 +116,8 @@ namespace OODProject
         public string Type { get; set; }
         public int Capacity { get; set; }
         public string Interface { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
     }
 
     public class CPUCooler 
@@ -111,6 +126,21 @@ namespace OODProject
         public string Name { get; set; }
         public string Size { get; set; }
         public int MaxTDP { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
     }
 
+    public class PartData : DbContext
+    {
+        public PartData() : base("PartsDatabase") { }
+        public DbSet<GenericPart> GenericParts { get; set; }
+        public DbSet<CPU> CPUs { get; set; }
+        public DbSet<Motherboard> Motherboards { get; set; }
+        public DbSet<RAM> RAMs { get; set; }
+        public DbSet<GPU> GPUs { get; set; }
+        public DbSet<PSU> PSUs { get; set; }
+        public DbSet<Case> Cases { get; set; }
+        public DbSet<Storage> Storages { get; set; }
+        public DbSet<CPUCooler> CPUCoolers { get; set; }
+    }
 }
