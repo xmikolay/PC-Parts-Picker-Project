@@ -28,7 +28,8 @@ namespace OODProject
 
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
-            
+            ChoosePart choosePartWindow = new ChoosePart();
+            choosePartWindow.ShowDialog();
         }
     }
 }
