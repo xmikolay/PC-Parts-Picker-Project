@@ -34,10 +34,19 @@ namespace PCPartsDatabaseManagement
                 //db.SaveChanges();
 
                 //Console.WriteLine("Saved to Database");
+
+                Motherboard mb1 = new Motherboard { MotherboardID = 1, Name = "MSI MAG Z890 Tomahawk WIFI", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 365.00m, Image = "", MemoryType = "DDR5" };
+                Motherboard mb2 = new Motherboard { MotherboardID = 2, Name = "Gigabyte Z890M Gaming X", Platform = "LGA1851", Chipset = "Z890", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "MATX", Price = 230.00m, Image = "", MemoryType = "DDR5" };
+                Motherboard mb3 = new Motherboard { MotherboardID = 3, Name = "MSI B760 GAMING PLUS WIFI", Platform = "LGA1700", Chipset = "B760", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 180.00m, Image = "", MemoryType = "DDR5" };
+                Motherboard mb4 = new Motherboard { MotherboardID = 4, Name = "ASUS ROG Crosshair X870E Hero", Platform = "AM5", Chipset = "X870E", MaxMemoryCapacity = 256, MemorySlots = 4, FormFactor = "ATX", Price = 740.99m, Image = "", MemoryType = "DDR5" };
+                Motherboard mb5 = new Motherboard { MotherboardID = 5, Name = "ASUS TUF GAMING B650-PLUS WIFI", Platform = "AM5", Chipset = "B650", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 179.99m, Image = "", MemoryType = "DDR5" };
+                Motherboard mb6 = new Motherboard { MotherboardID = 6, Name = "MSI MPG B550 GAMING CARBON WIFI", Platform = "AM4", Chipset = "B550", MaxMemoryCapacity = 128, MemorySlots = 4, FormFactor = "ATX", Price = 140.00m, Image = "", MemoryType = "DDR4" };
+
             }
 
 
             //Using this to Clear CPU table after incorrect seeding
+            //
             //using (var context = new PartData())
             //{
             //    try
