@@ -18,12 +18,16 @@ namespace OODProject
     /// <summary>
     /// Interaction logic for chooseCPU.xaml
     /// </summary>
+    
     public partial class ChoosePart : Window
     {
+        public string SelectedCpuName { get; private set; }
+        public decimal SelectedCpuPrice { get; private set; }
 
         private string part;
 
         PartData db = new PartData();
+
         public ChoosePart()
         {
             InitializeComponent();
@@ -52,12 +56,12 @@ namespace OODProject
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult = true;
+            this.Close();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            //OnReturn(null);
             this.Close();
         }
 
@@ -65,6 +69,9 @@ namespace OODProject
         {
             if (lbxPartsList.SelectedItem is CPU selectedCPU)
             {
+                SelectedCpuName = selectedCPU.Name;
+                SelectedCpuPrice = selectedCPU.Price;
+
                 var details = db.CPUs.FirstOrDefault(c => c.CpuID == selectedCPU.CpuID);
 
                 if (details == null)

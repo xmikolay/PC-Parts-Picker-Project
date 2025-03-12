@@ -40,11 +40,16 @@ namespace OODProject
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
             ChoosePart choosePartWindow = new ChoosePart("CPU");
-            choosePartWindow.Show();
+            choosePartWindow.ShowDialog();
 
-            //NavigationService ns = this.NavigationService;
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedCpuName;
+                decimal price = choosePartWindow.SelectedCpuPrice;
 
-            //ns.Navigate(choosePartWindow);
+                tblkCPU.Text = name;
+                tblkCPUPrice.Text = $"{price:c}";
+            }
         }
     }
 }
