@@ -37,6 +37,11 @@ namespace OODProject
         
         public int? CPUCoolerID { get; set; }
         public virtual CPUCooler CompatibleCooler { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}\t{Price:c}";
+        }
     }
 
     public class Motherboard

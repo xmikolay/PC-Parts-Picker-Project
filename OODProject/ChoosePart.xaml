@@ -5,25 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OODProject"
         mc:Ignorable="d"
-        Title="Part Selection" Height="450" Width="800">
+        Title="Part Selection" Height="450" Width="800"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <!-- Left Side: Selected CPU Details -->
-        <StackPanel Grid.Column="0" Margin="10">
-            <Image Name="Image" Height="150" Stretch="Uniform" />
-            <TextBlock Name="Name" FontSize="16" FontWeight="Bold" Margin="5" />
-            <TextBlock Name="Description" Margin="5,10,5,0" Height="150" />
+        <Rectangle Fill="LightGray" Grid.Row="1"></Rectangle>
+        <Rectangle Fill="LightGray" Grid.ColumnSpan="3"></Rectangle>
+
+        <StackPanel x:Name="stckPartInfo" Grid.Column="0" Grid.Row="1" Margin="10">
+            <Image x:Name="PartImage" Height="150" Stretch="Uniform" />
+            <TextBlock x:Name="PartName" FontSize="16" FontWeight="Bold" Margin="5" />
+            <TextBlock x:Name="PartDescription" Margin="5,10,5,0" Height="150" />
         </StackPanel>
 
-        <Label Grid.Column="1" Content="Name" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="2" Content="Price" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="1" Grid.Row="0" Content="Part Name and Price" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-            Margin="10" Click="btnClose_Click"/>
+            Margin="10" Click="btnClose_Click" Grid.Row="1"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+            Margin="10,0,50,10"  Grid.Row="1" Click="btnAdd_Click"/>
+
+        <ListBox x:Name="lbxPartsList" Grid.Column="1" Grid.Row="1" Margin="5"/>
     </Grid>
 </Window>

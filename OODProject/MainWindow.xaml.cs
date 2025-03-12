@@ -18,9 +18,20 @@ namespace OODProject
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
+    //Goals:
+
+    //Pass Part data from database, from MainWindow to ChoosePart.
+    //Have part data show in ChoosePart, show name and price of each part on right side, when clicked on more information shows up on left side.
+    //Allow user to sort by compatible parts in respect to rest of their system (e.g when user is choosing RAM, only show RAM that is compatible with chosen motherboard)
+    //Pass chosen data from ChoosePart to corresponding Textblock in MainWindow
+    //Have the compatibility checker option work in MainWindow (e.g AM5 CPU can only work with AM5 Motherboard)
+    //Come up with some sort of extra function (current idea, make a main menu where you choose whether you want to create a build or view saved builds.)
+
     public partial class MainWindow : Window
     {
-        //Main Window code
+        PartData db = new PartData();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +39,12 @@ namespace OODProject
 
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart();
-            choosePartWindow.ShowDialog();
+            ChoosePart choosePartWindow = new ChoosePart("CPU");
+            choosePartWindow.Show();
+
+            //NavigationService ns = this.NavigationService;
+
+            //ns.Navigate(choosePartWindow);
         }
     }
 }
