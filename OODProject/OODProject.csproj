@@ -131,6 +131,10 @@
     <Compile Include="Migrations\202503121211425_AddedPSU.Designer.cs">
       <DependentUpon>202503121211425_AddedPSU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503121519515_ChangedCPUImagePaths.cs" />
+    <Compile Include="Migrations\202503121519515_ChangedCPUImagePaths.Designer.cs">
+      <DependentUpon>202503121519515_ChangedCPUImagePaths.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -178,6 +182,9 @@
     <EmbeddedResource Include="Migrations\202503121211425_AddedPSU.resx">
       <DependentUpon>202503121211425_AddedPSU.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503121519515_ChangedCPUImagePaths.resx">
+      <DependentUpon>202503121519515_ChangedCPUImagePaths.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -190,6 +197,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\12100f.jpg" />
+    <Resource Include="Images\4070.png" />
+    <Resource Include="Images\4080 super.jpg" />
+    <Resource Include="Images\4090.jpg" />
+    <Resource Include="Images\5600x.jpg" />
+    <Resource Include="Images\7800xt.jpg" />
+    <Resource Include="Images\7900xt.png" />
+    <Resource Include="Images\7900xtx.jpg" />
+    <Resource Include="Images\7950x.jpg" />
+    <Resource Include="Images\9950x3d.jpg" />
+    <Resource Include="Images\Asus tuf.jpg" />
+    <Resource Include="Images\Core 7 265k.jpg" />
+    <Resource Include="Images\Core 9 285K.jpg" />
+    <Resource Include="Images\corsairddr4.jpg" />
+    <Resource Include="Images\corsairddr5.jpg" />
+    <Resource Include="Images\Gigabyte z890m.png" />
+    <Resource Include="Images\gskillddr4.jpg" />
+    <Resource Include="Images\gskillddr5.jpg" />
+    <Resource Include="Images\kingston.jpg" />
+    <Resource Include="Images\MSI B550.png" />
+    <Resource Include="Images\MSI B760 Gaming.png" />
+    <Resource Include="Images\MSI Z890 Tomahawk WIFI.png" />
+    <Resource Include="Images\ROG Crosshair X870e.png" />
+    <Resource Include="Images\tforce.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -42,15 +42,11 @@ namespace OODProject
             {
                 var cpuStore = db.CPUs.ToList();
 
-                var cpuToString = cpuStore.Select(c => c.ToString()).ToList();
-                lbxPartsList.ItemsSource = cpuToString;
+                //var cpuName = cpuStore.Select(c => c.Name).ToList();
+                lbxPartsList.ItemsSource= cpuStore;
+                lbxPartsList.DisplayMemberPath = "Name";
 
-                //var imageSource = cpuStore.Select(c => c.Image).FirstOrDefault();
-
-                //if (!string.IsNullOrEmpty(imageSource))
-                //{
-                //    PartImage.Source = new BitmapImage(new Uri(imageSource, UriKind.RelativeOrAbsolute));
-                //}              
+                //lbxPartsList.ItemsSource = cpuName;           
             }
         }
 
@@ -63,6 +59,33 @@ namespace OODProject
         {
             //OnReturn(null);
             this.Close();
-        }       
+        }
+
+        private void lbxPartsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbxPartsList.SelectedItem is CPU selectedCPU)
+            {
+                var details = db.CPUs.FirstOrDefault(c => c.CpuID == selectedCPU.CpuID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text = 
+                    $"Platform: {details.Platform}\n" +
+                    $"Cores: {details.Cores}, Threads: {details.Threads}\n" +
+                    $"Base Clock: {details.BaseClock}GHz, Boost Clock: {details.BoostClock}GHz\n" +
+                    $"Architecture: {details.Architecture}\n" +
+                    $"TDP: {details.TDP} watts\n" +
+                    $"Includes Cooler? {details.IncludesCooler}";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+        }
     }
 }
