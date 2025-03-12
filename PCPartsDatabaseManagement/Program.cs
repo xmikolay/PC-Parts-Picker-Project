@@ -76,12 +76,12 @@ namespace PCPartsDatabaseManagement
 
                 //Console.WriteLine("Saved to Database");
 
-                //GPU gpu1 = new GPU { GpuID = 1, Name = "NVIDIA GeForce RTX 4090", MemoryType = "GDDR6X", MemorySize = 24, TDP = 450, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 304, Price = 3799.00m, PSURequirement = 850, Image ="Images/4090"};
-                //GPU gpu2 = new GPU { GpuID = 2, Name = "ASUS Strix GeForce RTX 4080 SUPER", MemoryType = "GDDR6X", MemorySize = 16, TDP = 320, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 358, Price = 1300.00m, PSURequirement = 850, Image = "Images/4080 super"};
-                //GPU gpu3 = new GPU { GpuID = 3, Name = "Gigabyte GeForce RTX 4070 Ti SUPER GAMING OC", MemoryType = "GDDR6X", MemorySize = 16, TDP = 285, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 300, Price = 1000.00m, PSURequirement = 750, Image = "Images/4070"};
-                //GPU gpu4 = new GPU { GpuID = 4, Name = "PowerColor Hellhound RX 7900 XTX", MemoryType = "GDDR6", MemorySize = 24, TDP = 355, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 320, Price = 999.99m, PSURequirement = 800, Image = "Images/7900xtx"};
-                //GPU gpu5 = new GPU { GpuID = 5, Name = "ASUS TUF Gaming Radeon RX 7900 XT", MemoryType = "GDDR6", MemorySize = 20, TDP = 300, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 352, Price = 849.99m, PSURequirement = 750, Image = "Images/7900xt"};
-                //GPU gpu6 = new GPU { GpuID = 6, Name = "XFX Speedster QICK319 Radeon RX 7800 XT", MemoryType = "GDDR6", MemorySize = 16, TDP = 263, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 335, Price = 550.99m, PSURequirement = 700, Image = "Images/7800xt"};
+                //GPU gpu1 = new GPU { GpuID = 1, Name = "NVIDIA GeForce RTX 4090", MemoryType = "GDDR6X", MemorySize = 24, TDP = 450, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 304, Price = 3799.00m, PSURequirement = 850, Image = "Images/4090" };
+                //GPU gpu2 = new GPU { GpuID = 2, Name = "ASUS Strix GeForce RTX 4080 SUPER", MemoryType = "GDDR6X", MemorySize = 16, TDP = 320, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 358, Price = 1300.00m, PSURequirement = 850, Image = "Images/4080 super" };
+                //GPU gpu3 = new GPU { GpuID = 3, Name = "Gigabyte GeForce RTX 4070 Ti SUPER GAMING OC", MemoryType = "GDDR6X", MemorySize = 16, TDP = 285, Interface = "PCIe 4.0 x16", ExternalPower = "1x 16-pin", GPULength = 300, Price = 1000.00m, PSURequirement = 750, Image = "Images/4070" };
+                //GPU gpu4 = new GPU { GpuID = 4, Name = "PowerColor Hellhound RX 7900 XTX", MemoryType = "GDDR6", MemorySize = 24, TDP = 355, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 320, Price = 999.99m, PSURequirement = 800, Image = "Images/7900xtx" };
+                //GPU gpu5 = new GPU { GpuID = 5, Name = "ASUS TUF Gaming Radeon RX 7900 XT", MemoryType = "GDDR6", MemorySize = 20, TDP = 300, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 352, Price = 849.99m, PSURequirement = 750, Image = "Images/7900xt" };
+                //GPU gpu6 = new GPU { GpuID = 6, Name = "XFX Speedster QICK319 Radeon RX 7800 XT", MemoryType = "GDDR6", MemorySize = 16, TDP = 263, Interface = "PCIe 4.0 x16", ExternalPower = "2x 8-pin", GPULength = 335, Price = 550.99m, PSURequirement = 700, Image = "Images/7800xt" };
 
                 //db.GPUs.Add(gpu1);
                 //db.GPUs.Add(gpu2);
@@ -91,6 +91,26 @@ namespace PCPartsDatabaseManagement
                 //db.GPUs.Add(gpu6);
 
                 //Console.WriteLine("Added GPUS to database");
+
+                //db.SaveChanges();
+
+                //Console.WriteLine("Saved to Database");
+
+                //PSU psu1 = new PSU { PsuID = 1, Name = "Corsair RM1000x", Wattage = 1000, Size = "ATX", Efficiency = "80+ Gold", Modularity = "Fully Modular", Price = 179.99m, Image = "Images/RM1000x" };
+                //PSU psu2 = new PSU { PsuID = 2, Name = "Seasonic PRIME TX-850", Wattage = 850, Size = "ATX", Efficiency = "80+ Titanium", Modularity = "Fully Modular", Price = 249.99m, Image = "Images/PRIMETX850" };
+                //PSU psu3 = new PSU { PsuID = 3, Name = "EVGA SuperNOVA 750 G6", Wattage = 750, Size = "ATX", Efficiency = "80+ Gold", Modularity = "Fully Modular", Price = 139.99m, Image = "Images/SuperNOVA750G6" };
+                //PSU psu4 = new PSU { PsuID = 4, Name = "ASUS ROG STRIX 1000W", Wattage = 1000, Size = "ATX", Efficiency = "80+ Platinum", Modularity = "Fully Modular", Price = 209.99m, Image = "Images/ROGSTRIX1000W" };
+                //PSU psu5 = new PSU { PsuID = 5, Name = "Cooler Master V850 SFX", Wattage = 850, Size = "SFX", Efficiency = "80+ Gold", Modularity = "Fully Modular", Price = 179.99m, Image = "Images/V850SFX" };
+                //PSU psu6 = new PSU { PsuID = 6, Name = "Thermaltake Toughpower GF3 1200W", Wattage = 1200, Size = "ATX", Efficiency = "80+ Gold", Modularity = "Fully Modular", Price = 259.99m, Image = "Images/ToughpowerGF31200W" };
+
+                //db.PSUs.Add(psu1);
+                //db.PSUs.Add(psu2);
+                //db.PSUs.Add(psu3);
+                //db.PSUs.Add(psu4);
+                //db.PSUs.Add(psu5);
+                //db.PSUs.Add(psu6);
+
+                //Console.WriteLine("Added PSUs to database");
 
                 //db.SaveChanges();
 
