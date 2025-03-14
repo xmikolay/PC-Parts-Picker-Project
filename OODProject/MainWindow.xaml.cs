@@ -51,5 +51,20 @@ namespace OODProject
                 tblkCPUPrice.Text = $"{price:c}";
             }
         }
+
+        private void btnMotherboard_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("Motherboard");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedMotherboardName;
+                decimal price = choosePartWindow.SelectedMotherboardPrice;
+
+                tblkMB.Text = name;
+                tblkMBPrice.Text = $"{price:c}";
+            }
+        }
     }
 }

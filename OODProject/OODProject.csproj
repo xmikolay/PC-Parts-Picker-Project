@@ -135,6 +135,10 @@
     <Compile Include="Migrations\202503121519515_ChangedCPUImagePaths.Designer.cs">
       <DependentUpon>202503121519515_ChangedCPUImagePaths.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503141725052_ChangedMBImagePath.cs" />
+    <Compile Include="Migrations\202503141725052_ChangedMBImagePath.Designer.cs">
+      <DependentUpon>202503141725052_ChangedMBImagePath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503121519515_ChangedCPUImagePaths.resx">
       <DependentUpon>202503121519515_ChangedCPUImagePaths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503141725052_ChangedMBImagePath.resx">
+      <DependentUpon>202503141725052_ChangedMBImagePath.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
