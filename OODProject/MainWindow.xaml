@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OODProject"
         mc:Ignorable="d"
-        Title="System Configurator" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinHeight="350" MinWidth="700">
+        Title="System Configurator" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinHeight="350" MinWidth="700" Loaded="Window_Loaded">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
         
         <Label Content="CPU" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkCPU" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
-        <TextBlock x:Name="tblkCPUPrice" Grid.Row="0" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="tblkCPUPrice" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
         <Button x:Name="btnCPU" Grid.Row="0" Grid.Column="3" Content="Browse" Click="btnCPU_Click" Tag="CPU"/>
 
         <Label Content="Motherboard" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>

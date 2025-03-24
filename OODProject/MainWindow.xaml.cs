@@ -37,6 +37,47 @@ namespace OODProject
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tblkCPUPrice.Text = $"{0:c}";
+            tblkCoolerPrice.Text = $"{0:c}";
+            tblkMBPrice.Text = $"{0:c}";
+            tblkRAMPrice.Text = $"{0:c}";
+            tblkGPUPrice.Text = $"{0:c}";
+            tblkPSUPrice.Text = $"{0:c}";
+            tblkCasePrice.Text = $"{0:c}";
+            tblkStorage1Price.Text = $"{0:c}";
+            tblkStorage2Price.Text = $"{0:c}";
+            tblkTotalPrice.Text = $"Total: {0:c}";
+        }
+
+        private void GetTotal()
+        {
+            double cpuPrice = GetPrice(tblkCPUPrice.Text);
+            double cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text);
+            double mbPrice = GetPrice(tblkMBPrice.Text);
+            double ramPrice = GetPrice(tblkRAMPrice.Text);
+            double gpuPrice = GetPrice(tblkGPUPrice.Text);
+            double psuPrice = GetPrice(tblkPSUPrice.Text);
+            double casePrice = GetPrice(tblkCasePrice.Text);
+            double storage1Price = GetPrice(tblkStorage1Price.Text);
+            double storage2Price = GetPrice(tblkStorage2Price.Text);
+
+            double total = cpuPrice + cpuCoolerPrice + mbPrice + ramPrice + gpuPrice + psuPrice + casePrice + storage1Price + storage2Price;
+
+            tblkTotalPrice.Text = $"Total: {total:c}";
+        }
+
+        private double GetPrice(string textBlock)
+        {
+            double price = 0;
+            if (double.TryParse(textBlock, out price))
+            {
+                return price;
+            }
+            else { return 0; }
+        }
+
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
             ChoosePart choosePartWindow = new ChoosePart("CPU");
@@ -49,6 +90,7 @@ namespace OODProject
 
                 tblkCPU.Text = name;
                 tblkCPUPrice.Text = $"{price:c}";
+                GetTotal();
             }
         }
 
@@ -64,7 +106,10 @@ namespace OODProject
 
                 tblkMB.Text = name;
                 tblkMBPrice.Text = $"{price:c}";
+                GetTotal();
             }
         }
+
+
     }
 }
