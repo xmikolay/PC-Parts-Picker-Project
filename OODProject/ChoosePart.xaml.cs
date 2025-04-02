@@ -40,8 +40,11 @@ namespace OODProject
         public string SelectedCaseName { get; private set; }
         public decimal SelectedCasePrice { get; private set; }
 
-        public string SelectedStorageName { get; private set; }
-        public decimal SelectedStoragePrice { get; private set; }
+        public string SelectedStorage1Name { get; private set; }
+        public decimal SelectedStorage1Price { get; private set; }
+
+        public string SelectedStorage2Name { get; private set; }
+        public decimal SelectedStorage2Price { get; private set; }
 
         public string SelectedCPUCoolerName { get; private set; }
         public decimal SelectedCPUCoolerPrice { get; private set; }
@@ -73,11 +76,53 @@ namespace OODProject
                 lbxPartsList.DisplayMemberPath = "Name";        
             }
 
+            if (part == "CPU Cooler")
+            {
+                var coolerStore = db.CPUCoolers.ToList();
+                lbxPartsList.ItemsSource = coolerStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
             if (part == "Motherboard")
             {
                 var mbStore = db.Motherboards.ToList();
 
                 lbxPartsList.ItemsSource = mbStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (part == "RAM")
+            {
+                var ramStore = db.RAMs.ToList();
+                lbxPartsList.ItemsSource = ramStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (part == "GPU")
+            {
+                var gpuStore = db.GPUs.ToList();
+                lbxPartsList.ItemsSource = gpuStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (part == "PSU")
+            {
+                var psuStore = db.PSUs.ToList();
+                lbxPartsList.ItemsSource = psuStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (part == "Case")
+            {
+                var caseStore = db.Cases.ToList();
+                lbxPartsList.ItemsSource = caseStore;
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (part == "Storage 1" || part == "Storage 2")
+            {
+                var storageStore = db.Storages.ToList();
+                lbxPartsList.ItemsSource = storageStore;
                 lbxPartsList.DisplayMemberPath = "Name";
             }
         }
@@ -124,6 +169,32 @@ namespace OODProject
             }
             #endregion
 
+            #region CPU Cooler Parts List
+            if (lbxPartsList.SelectedItem is CPUCooler selectedCooler)
+            {
+                SelectedCPUCoolerName = selectedCooler.Name;
+                SelectedCPUCoolerPrice = selectedCooler.Price;
+
+                var details = db.CPUCoolers.FirstOrDefault(c => c.CPUCoolerID == selectedCooler.CPUCoolerID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Size: {details.Size}\n" +
+                    $"Max TDP: {details.MaxTDP}W\n";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
+
+            #region Motherboard Parts List
             if (lbxPartsList.SelectedItem is Motherboard selectedMB)
             {
                 SelectedMotherboardName = selectedMB.Name;
@@ -149,6 +220,145 @@ namespace OODProject
                     PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
                 }
             }
+            #endregion
+
+            #region RAM Parts List
+            if (lbxPartsList.SelectedItem is RAM selectedRAM)
+            {
+                SelectedRAMName = selectedRAM.Name;
+                SelectedRAMPrice = selectedRAM.Price;
+
+                var details = db.RAMs.FirstOrDefault(c => c.RamID == selectedRAM.RamID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Type: {details.RAMType}\n" +
+                    $"Modules: {details.Modules}\n" +
+                    $"Capacity: {details.Capacity}GB, Speed: {details.Speed}MHz\n" +
+                    $"CAS Latency: {details.CASLatency}\n";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
+
+            #region GPU Parts List
+            if (lbxPartsList.SelectedItem is GPU selectedGPU)
+            {
+                SelectedGPUName = selectedGPU.Name;
+                SelectedGPUPrice = selectedGPU.Price;
+
+                var details = db.GPUs.FirstOrDefault(c => c.GpuID == selectedGPU.GpuID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Memory Type: {details.MemoryType}, Memory Size: {details.MemorySize}GB\n" +
+                    $"TDP: {details.TDP}W\n" +
+                    $"Interface: {details.Interface}\n" +
+                    $"External Power: {details.ExternalPower}\n" +
+                    $"Reccommended PSU Power: {details.PSURequirement}W\n" +
+                    $"Length: {details.GPULength}mm\n";
+                    
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
+
+            #region PSU Parts List
+            if (lbxPartsList.SelectedItem is PSU selectedPSU)
+            {
+                SelectedPSUName = selectedPSU.Name;
+                SelectedPSUPrice = selectedPSU.Price;
+
+                var details = db.PSUs.FirstOrDefault(c => c.PsuID == selectedPSU.PsuID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Wattage: {details.Wattage}W\n" +
+                    $"Size: {details.Size}\n" +
+                    $"Efficiency Rating: {details.Efficiency}\n" +
+                    $"Modularity: {details.Modularity}\n";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
+
+            #region Case Parts List
+            if (lbxPartsList.SelectedItem is Case selectedCase)
+            {
+                SelectedCaseName = selectedCase.Name;
+                SelectedCasePrice = selectedCase.Price;
+
+                var details = db.Cases.FirstOrDefault(c => c.CaseID == selectedCase.CaseID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Form Factor: {details.FormFactor}W\n" +
+                    $"Max GPU Length: {details.MaxGPULength}mm\n" +
+                    $"Max Cooler Height: {details.MaxCoolerHeight}mm\n" +
+                    $"Fans Included?: {details.FansIncluded}\n";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
+
+            #region Storage Parts List
+            if (lbxPartsList.SelectedItem is Storage selectedStorage)
+            {
+                SelectedStorage1Name = selectedStorage.Name;
+                SelectedStorage2Name = selectedStorage.Name;
+                SelectedStorage1Price = selectedStorage.Price;
+                SelectedStorage2Price = selectedStorage.Price;
+
+                var details = db.Storages.FirstOrDefault(c => c.StorageID == selectedStorage.StorageID);
+
+                if (details == null)
+                {
+                    return;
+                }
+
+                PartName.Text = details.Name;
+                PartDescription.Text =
+                    $"Type: {details.Type}\n" +
+                    $"Capacity: {details.Capacity}GB\n" +
+                    $"Interface: {details.Interface}\n";
+
+                if (!string.IsNullOrEmpty(details.Image))
+                {
+                    PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
+                }
+            }
+            #endregion
         }
     }
 }

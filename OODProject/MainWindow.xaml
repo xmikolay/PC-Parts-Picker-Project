@@ -40,37 +40,37 @@
         <Label Content="RAM" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkRAM" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkRAMPrice" Grid.Row="3" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnRAM" Grid.Row="3" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnRAM" Grid.Row="3" Grid.Column="3" Content="Browse" Click="btnRAM_Click"/>
 
         <Label Content="GPU" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkGPU" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkGPUPrice" Grid.Row="4" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnGPU" Grid.Row="4" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnGPU" Grid.Row="4" Grid.Column="3" Content="Browse" Click="btnGPU_Click"/>
 
         <Label Content="Power Supply" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkPSU" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkPSUPrice" Grid.Row="5" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnPSU" Grid.Row="5" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnPSU" Grid.Row="5" Grid.Column="3" Content="Browse" Click="btnPSU_Click"/>
 
         <Label Content="Case" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkCase" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkCasePrice" Grid.Row="6" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnCase" Grid.Row="6" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnCase" Grid.Row="6" Grid.Column="3" Content="Browse" Click="btnCase_Click"/>
 
         <Label Content="Storage 1" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkStorage1" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkStorage1Price" Grid.Row="7" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnStorage1" Grid.Row="7" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnStorage1" Grid.Row="7" Grid.Column="3" Content="Browse" Click="btnStorage1_Click"/>
 
         <Label Content="Storage 2*" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkStorage2" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkStorage2Price" Grid.Row="8" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnStorage2" Grid.Row="8" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnStorage2" Grid.Row="8" Grid.Column="3" Content="Browse" Click="btnStorage2_Click"/>
 
         <Label Content="CPU Cooler*" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
         <TextBlock x:Name="tblkCooler" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkCoolerPrice" Grid.Row="1" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
-        <Button x:Name="btnCooler" Grid.Row="1" Grid.Column="3" Content="Browse"/>
+        <Button x:Name="btnCooler" Grid.Row="1" Grid.Column="3" Content="Browse" Click="btnCooler_Click"/>
 
         <TextBlock Text="Compatibility" Foreground="Green" Grid.Row="9" Grid.Column="1" Margin="5" HorizontalAlignment="Center"/>
         <TextBlock x:Name="tblkTotalPrice" Grid.Row="9" Grid.Column="2" Text="Total: €" Margin="5" HorizontalAlignment="Center"/>

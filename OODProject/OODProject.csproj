@@ -231,6 +231,32 @@
     <Resource Include="Images\ROG Crosshair X870e.png" />
     <Resource Include="Images\tforce.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4000DAirflow.jpg" />
+    <Resource Include="Images\990Pro2TB.jpg" />
+    <Resource Include="Images\DarkRockPro4.jpg" />
+    <Resource Include="Images\FuryRenegade1TB.jpg" />
+    <Resource Include="Images\G360A.jpg" />
+    <Resource Include="Images\GammixS702TB.jpg" />
+    <Resource Include="Images\H150iELITEX.jpg" />
+    <Resource Include="Images\H7Flow.png" />
+    <Resource Include="Images\Hyper212Black.jpg" />
+    <Resource Include="Images\KrakenX73.jpg" />
+    <Resource Include="Images\LiquidFreezer280.png" />
+    <Resource Include="Images\Meshify2.jpg" />
+    <Resource Include="Images\NH-D15.jpg" />
+    <Resource Include="Images\NR200P.png" />
+    <Resource Include="Images\PC-O11Dynamic.jpg" />
+    <Resource Include="Images\PRIMETX850.jpg" />
+    <Resource Include="Images\RM1000x.jpg" />
+    <Resource Include="Images\Rocket4Plus4TB.jpg" />
+    <Resource Include="Images\ROGSTRIX1000W.png" />
+    <Resource Include="Images\SN850X1TB.jpg" />
+    <Resource Include="Images\SuperNOVA750G6.png" />
+    <Resource Include="Images\T7002TB.png" />
+    <Resource Include="Images\ToughpowerGF31200W.jpg" />
+    <Resource Include="Images\V850SFX.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

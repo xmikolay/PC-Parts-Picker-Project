@@ -53,29 +53,32 @@ namespace OODProject
 
         private void GetTotal()
         {
-            double cpuPrice = GetPrice(tblkCPUPrice.Text);
-            double cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text);
-            double mbPrice = GetPrice(tblkMBPrice.Text);
-            double ramPrice = GetPrice(tblkRAMPrice.Text);
-            double gpuPrice = GetPrice(tblkGPUPrice.Text);
-            double psuPrice = GetPrice(tblkPSUPrice.Text);
-            double casePrice = GetPrice(tblkCasePrice.Text);
-            double storage1Price = GetPrice(tblkStorage1Price.Text);
-            double storage2Price = GetPrice(tblkStorage2Price.Text);
+            decimal cpuPrice = GetPrice(tblkCPUPrice.Text);
+            decimal cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text);
+            decimal mbPrice = GetPrice(tblkMBPrice.Text);
+            decimal ramPrice = GetPrice(tblkRAMPrice.Text);
+            decimal gpuPrice = GetPrice(tblkGPUPrice.Text);
+            decimal psuPrice = GetPrice(tblkPSUPrice.Text);
+            decimal casePrice = GetPrice(tblkCasePrice.Text);
+            decimal storage1Price = GetPrice(tblkStorage1Price.Text);
+            decimal storage2Price = GetPrice(tblkStorage2Price.Text);
 
-            double total = cpuPrice + cpuCoolerPrice + mbPrice + ramPrice + gpuPrice + psuPrice + casePrice + storage1Price + storage2Price;
+            decimal total = cpuPrice + cpuCoolerPrice + mbPrice + ramPrice + gpuPrice + psuPrice + casePrice + storage1Price + storage2Price;
 
             tblkTotalPrice.Text = $"Total: {total:c}";
         }
 
-        private double GetPrice(string textBlock)
+        private decimal GetPrice(string textBlock)
         {
-            double price = 0;
-            if (double.TryParse(textBlock, out price))
+            decimal price = 0;
+            if (decimal.TryParse(textBlock, out price))
             {
                 return price;
             }
-            else { return 0; }
+            else 
+            { 
+                return 0; 
+            }
         }
 
         private void btnCPU_Click(object sender, RoutedEventArgs e)
@@ -110,6 +113,116 @@ namespace OODProject
             }
         }
 
+        private void btnRAM_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("RAM");
+            choosePartWindow.ShowDialog();
 
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedRAMName;
+                decimal price = choosePartWindow.SelectedRAMPrice;
+
+                tblkRAM.Text = name;
+                tblkRAMPrice.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnGPU_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("GPU");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedGPUName;
+                decimal price = choosePartWindow.SelectedGPUPrice;
+
+                tblkGPU.Text = name;
+                tblkGPUPrice.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnPSU_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("PSU");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedPSUName;
+                decimal price = choosePartWindow.SelectedPSUPrice;
+
+                tblkPSU.Text = name;
+                tblkPSUPrice.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnCase_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("Case");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedCaseName;
+                decimal price = choosePartWindow.SelectedCasePrice;
+
+                tblkCase.Text = name;
+                tblkCasePrice.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnCooler_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("CPU Cooler");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedCPUCoolerName;
+                decimal price = choosePartWindow.SelectedCPUCoolerPrice;
+
+                tblkCooler.Text = name;
+                tblkCoolerPrice.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnStorage1_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("Storage 1");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedStorage1Name;
+                decimal price = choosePartWindow.SelectedStorage1Price;
+
+                tblkStorage1.Text = name;
+                tblkStorage1Price.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
+
+        private void btnStorage2_Click(object sender, RoutedEventArgs e)
+        {
+            ChoosePart choosePartWindow = new ChoosePart("Storage 2");
+            choosePartWindow.ShowDialog();
+
+            if (choosePartWindow.DialogResult == true)
+            {
+                string name = choosePartWindow.SelectedStorage2Name;
+                decimal price = choosePartWindow.SelectedStorage2Price;
+
+                tblkStorage2.Text = name;
+                tblkStorage2Price.Text = $"{price:c}";
+                GetTotal();
+            }
+        }
     }
 }
