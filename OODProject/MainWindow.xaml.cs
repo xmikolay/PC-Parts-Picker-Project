@@ -53,19 +53,20 @@ namespace OODProject
 
         private void GetTotal()
         {
-            decimal cpuPrice = GetPrice(tblkCPUPrice.Text);
-            decimal cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text);
-            decimal mbPrice = GetPrice(tblkMBPrice.Text);
-            decimal ramPrice = GetPrice(tblkRAMPrice.Text);
-            decimal gpuPrice = GetPrice(tblkGPUPrice.Text);
-            decimal psuPrice = GetPrice(tblkPSUPrice.Text);
-            decimal casePrice = GetPrice(tblkCasePrice.Text);
-            decimal storage1Price = GetPrice(tblkStorage1Price.Text);
-            decimal storage2Price = GetPrice(tblkStorage2Price.Text);
+            decimal cpuPrice = GetPrice(tblkCPUPrice.Text.Substring(1));
+            decimal cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text.Substring(1));
+            decimal mbPrice = GetPrice(tblkMBPrice.Text.Substring(1));
+            decimal ramPrice = GetPrice(tblkRAMPrice.Text.Substring(1));
+            decimal gpuPrice = GetPrice(tblkGPUPrice.Text.Substring(1));
+            decimal psuPrice = GetPrice(tblkPSUPrice.Text.Substring(1));
+            decimal casePrice = GetPrice(tblkCasePrice.Text.Substring(1));
+            decimal storage1Price = GetPrice(tblkStorage1Price.Text.Substring(1));
+            decimal storage2Price = GetPrice(tblkStorage2Price.Text.Substring(1));
 
             decimal total = cpuPrice + cpuCoolerPrice + mbPrice + ramPrice + gpuPrice + psuPrice + casePrice + storage1Price + storage2Price;
 
             tblkTotalPrice.Text = $"Total: {total:c}";
+           //decimal test = GetPrice(tblkCPUPrice.Text);
         }
 
         private decimal GetPrice(string textBlock)
