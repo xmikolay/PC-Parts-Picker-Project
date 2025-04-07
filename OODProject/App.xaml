@@ -4,6 +4,56 @@
              xmlns:local="clr-namespace:OODProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+
+        <Style x:Key="BrowseButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#576ca8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Opacity="0.2" ShadowDepth="2" BlurRadius="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SelectedPartStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="MinHeight" Value="32"></Setter>
+            <Setter Property="Text" Value="Not Selected..."></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="0,6,0,0"></Setter>
+        </Style>
+
+        <Style x:Key="PartTypeStyle" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+
+        <Style x:Key="PartPriceStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
