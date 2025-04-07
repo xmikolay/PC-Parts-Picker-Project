@@ -87,7 +87,8 @@ namespace OODProject
         #region Button Clicks
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("CPU");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("CPU", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -103,7 +104,8 @@ namespace OODProject
 
         private void btnMotherboard_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("Motherboard");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("Motherboard", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -119,7 +121,8 @@ namespace OODProject
 
         private void btnRAM_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("RAM");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("RAM", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -135,7 +138,8 @@ namespace OODProject
 
         private void btnGPU_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("GPU");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("GPU", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -151,7 +155,8 @@ namespace OODProject
 
         private void btnPSU_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("PSU");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("PSU", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -167,7 +172,8 @@ namespace OODProject
 
         private void btnCase_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("Case");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("Case", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)
@@ -183,7 +189,8 @@ namespace OODProject
 
         private void btnCooler_Click(object sender, RoutedEventArgs e)
         {
-            ChoosePart choosePartWindow = new ChoosePart("CPU Cooler");
+            CurrentBuild currentBuild = new CurrentBuild();
+            ChoosePart choosePartWindow = new ChoosePart("CPU Cooler", currentBuild);
             choosePartWindow.ShowDialog();
 
             if (choosePartWindow.DialogResult == true)

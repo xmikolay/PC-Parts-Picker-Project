@@ -50,6 +50,8 @@ namespace OODProject
         public decimal SelectedCPUCoolerPrice { get; private set; }
         #endregion
 
+        private CurrentBuild currentBuild;
+
         private string part;
 
         PartData db = new PartData();
@@ -64,15 +66,28 @@ namespace OODProject
             part = button;
         }
 
+        public ChoosePart(string button, CurrentBuild build) : this(button)
+        {
+            currentBuild = build;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //if cpu button clicked - get cpu info from db
 
             if (part == "CPU")
             {
-                var cpuStore = db.CPUs.ToList();
+                var cpuQuery = db.CPUs.AsQueryable();
 
-                lbxPartsList.ItemsSource= cpuStore;
+                if (!string.IsNullOrEmpty(currentBuild.MBPlatform))
+                {
+                    cpuQuery = cpuQuery
+                        .Where(c => c.Platform ==  currentBuild.MBPlatform);
+
+
+                }
+
+                lbxPartsList.ItemsSource= cpuQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";        
             }
 
