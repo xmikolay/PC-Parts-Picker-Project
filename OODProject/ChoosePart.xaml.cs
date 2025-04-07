@@ -76,11 +76,12 @@ namespace OODProject
         {
             //if cpu button clicked - get cpu info from db
 
+            #region Filtering Compatible Parts...
             if (part == "CPU")
             {
                 var cpuQuery = db.CPUs.AsQueryable();
 
-                if (!string.IsNullOrEmpty(currentBuild?.MBPlatform))
+                if (!string.IsNullOrEmpty(currentBuild.MBPlatform))
                 {
                     cpuQuery = cpuQuery
                         .Where(c => c.Platform ==  currentBuild.MBPlatform);
@@ -160,7 +161,7 @@ namespace OODProject
             {
                 var gpuQuery = db.GPUs.AsQueryable();
 
-                if (!string.IsNullOrEmpty(currentBuild.CaseMaxGPULength.ToString()))
+                if (currentBuild.CaseMaxGPULength > 0)
                 {
                     gpuQuery = gpuQuery
                         .Where(g => g.GPULength <= currentBuild.CaseMaxGPULength);
@@ -168,7 +169,7 @@ namespace OODProject
                     lblShowingComp.Visibility = Visibility.Visible;
                 }
 
-                if (!string.IsNullOrEmpty(currentBuild.PSUPower.ToString()))
+                if (currentBuild.PSUPower > 0)
                 {
                     gpuQuery = gpuQuery
                         .Where(g => g.PSURequirement <= currentBuild.PSUPower);
@@ -184,10 +185,10 @@ namespace OODProject
             {
                 var psuQuery = db.PSUs.AsQueryable();
 
-                if (!string.IsNullOrEmpty(currentBuild.GPUPsuReq.ToString()))
+                if (currentBuild.GPUPsuReq > 0)
                 {
                     psuQuery = psuQuery
-                        .Where(p => p.Wattage <= currentBuild.CaseMaxGPULength);
+                        .Where(p => p.Wattage >= currentBuild.GPUPsuReq);
 
                     lblShowingComp.Visibility = Visibility.Visible;
                 }
@@ -198,8 +199,17 @@ namespace OODProject
 
             if (part == "Case")
             {
-                var caseStore = db.Cases.ToList();
-                lbxPartsList.ItemsSource = caseStore;
+                var caseQuery = db.Cases.AsQueryable();
+
+                if (currentBuild.GPULength > 0)
+                {
+                    caseQuery = caseQuery
+                        .Where(c => c.MaxGPULength >= currentBuild.GPULength);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = caseQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
@@ -214,6 +224,8 @@ namespace OODProject
             {
                 chkbxShowComp.Visibility = Visibility.Visible;
             }
+
+            #endregion
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -450,6 +462,7 @@ namespace OODProject
             #endregion
         }
 
+        #region Checkbox for Part Filtering
         private void chkbxShowComp_Checked(object sender, RoutedEventArgs e)
         {
             if (chkbxShowComp.IsChecked == true)
@@ -483,12 +496,14 @@ namespace OODProject
                     case "Case":
                         lbxPartsList.ItemsSource = db.Cases.ToList();
                         break;
-                    case "Storage":
+                    case "Storage 1":
+                    case "Storage 2":
                         lbxPartsList.ItemsSource = db.Storages.ToList();
                         break;
                 }
                 lbxPartsList.DisplayMemberPath = "Name";
             }
         }
+        #endregion
     }
 }
