@@ -234,13 +234,13 @@ namespace OODProject
         {
             List<string> Errors = new List<string>();
 
-            CPU selectedCPU;
-            Motherboard selectedMB;
-            RAM selectedRAM;
-            GPU selectedGPU;
-            Case selectedCase;
-            PSU selectedPSU;
-            CPUCooler selectedCooler;
+            CPU selectedCPU = null;
+            Motherboard selectedMB = null;
+            RAM selectedRAM = null;
+            GPU selectedGPU = null;
+            Case selectedCase = null;
+            PSU selectedPSU = null;
+            CPUCooler selectedCooler = null;
 
             using (var db = new PartData())
             {
@@ -273,11 +273,55 @@ namespace OODProject
 
                 if (!string.IsNullOrEmpty(tblkGPU.Text))
                 {
-                    selectedMB = db.Motherboards.FirstOrDefault(m => m.Name == tblkMB.Text);
+                    selectedGPU = db.GPUs.FirstOrDefault(g => g.Name == tblkGPU.Text);
                 }
                 else
                 {
-                    Errors.Add("Motherboard not selected.");
+                    Errors.Add("GPU not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkCase.Text))
+                {
+                    selectedCase = db.Cases.FirstOrDefault(cs => cs.Name == tblkCase.Text);
+                }
+                else
+                {
+                    Errors.Add("Case not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkPSU.Text))
+                {
+                    selectedPSU = db.PSUs.FirstOrDefault(p => p.Name == tblkPSU.Text);
+                }
+                else
+                {
+                    Errors.Add("PSU not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkCooler.Text))
+                {
+                    selectedCooler = db.CPUCoolers.FirstOrDefault(cc => cc.Name == tblkCooler.Text);
+                }
+                else
+                {
+                    Errors.Add("CPU Cooler not selected.");
+                }
+
+                if (selectedCPU != null && selectedMB != null)
+                {
+                    if (selectedCPU.Platform != selectedMB.Platform)
+                    {
+                        Errors.Add($"CPU ({selectedCPU.Name}) and Motherboard ({selectedMB.Name}) socket types do not match: {selectedCPU.Platform} and {selectedMB.Platform}");
+                    }
+                }
+
+                if (Errors.Count > 0)
+                {
+                    MessageBox.Show(string.Join(Environment.NewLine, Errors), "Compatibility Errors", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("All parts are compatible!", "Compatibility Check", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }    
         }
