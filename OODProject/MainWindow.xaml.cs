@@ -302,11 +302,10 @@ namespace OODProject
                 {
                     selectedCooler = db.CPUCoolers.FirstOrDefault(cc => cc.Name == tblkCooler.Text);
                 }
-                else if (selectedCPU.IncludesCooler)
-                {
-
-                    Errors.Add("CPU Cooler not selected.");
-                }
+                //else
+                //{
+                //    Errors.Add("CPU Cooler not selected.");
+                //}
 
                 if (selectedCPU != null && selectedMB != null)
                 {
@@ -316,20 +315,68 @@ namespace OODProject
                     }
                 }
 
+                //if (selectedCPU != null && selectedCooler != null)
+                //{
+                //    if (selectedCPU.TDP > selectedCooler.MaxTDP)
+                //    {
+                //        Errors.Add($"CPU ({selectedCPU.Name}) TDP exceeds CPU Cooler ({selectedCooler.Name}) maximum TDP: {selectedCPU.TDP}W and {selectedCooler.MaxTDP}W");
+                //    }
+                //    if (selectedCPU.IncludesCooler != true && selectedCooler == null)
+                //    {
+                //        Errors.Add($"CPU {selectedCPU.Name} does not include a cooler, please select one.");
+                //    }
+                //}
+
                 if (selectedCPU != null)
                 {
-                    if (selectedCPU.IncludesCooler == false)
+                    if (selectedCooler != null)
                     {
-                        if (selectedCooler == null)
-                        {
-                            Errors.Add()
-                        }
-
                         if (selectedCPU.TDP > selectedCooler.MaxTDP)
                         {
                             Errors.Add($"CPU ({selectedCPU.Name}) TDP exceeds CPU Cooler ({selectedCooler.Name}) maximum TDP: {selectedCPU.TDP}W and {selectedCooler.MaxTDP}W");
                         }
-                    }                   
+                    }
+                    else if (selectedCPU.IncludesCooler != true)
+                    {
+                        Errors.Add($"CPU {selectedCPU.Name} does not include a cooler, please select one.");
+                    }
+                }
+
+                if (selectedGPU != null && selectedCase != null)
+                {
+                    if (selectedCase.MaxGPULength < selectedGPU.GPULength)
+                    {
+                        Errors.Add($"GPU ({selectedGPU.Name}) length exceeds Case ({selectedCase.Name}) maximum GPU length: {selectedGPU.GPULength}mm and {selectedCase.MaxGPULength}mm");
+                    }
+                }
+
+                if (selectedMB != null && selectedCase != null)
+                {
+                    if (selectedCase.FormFactor != selectedMB.FormFactor)
+                    {
+                        Errors.Add($"Motherboard ({selectedMB.Name}) form factor does not match Case ({selectedCase.Name}) form factor: {selectedMB.FormFactor} and {selectedCase.FormFactor}");
+                    }
+                }
+
+                if (selectedGPU != null && selectedPSU != null)
+                {
+                    if (selectedGPU.PSURequirement > selectedPSU.Wattage)
+                    {
+                        Errors.Add($"GPU ({selectedGPU.Name}) minimum PSU wattage exceeds PSU ({selectedPSU.Name}) wattage: {selectedGPU.PSURequirement}W and {selectedPSU.Wattage}W");
+                    }
+                }
+
+                if (selectedRAM != null && selectedMB != null)
+                {
+                    if (selectedMB.MaxMemoryCapacity < selectedRAM.Capacity)
+                    {
+                        Errors.Add($"Motherboard ({selectedMB.Name}) maximum RAM capacity exceeds RAM ({selectedRAM.Name}) capacity: {selectedMB.MaxMemoryCapacity} and {selectedRAM.Capacity}");
+                    }
+
+                    if (selectedMB.MemoryType != selectedRAM.RAMType)
+                    {
+                        Errors.Add($"Motherboard ({selectedMB.Name}) memory type does not match RAM ({selectedRAM.Name}) memory type: {selectedMB.MemoryType} and {selectedRAM.RAMType}");
+                    }
                 }
 
                 if (Errors.Count > 0)

@@ -320,7 +320,7 @@ namespace OODProject
 
                 PartName.Text = details.Name;
                 PartDescription.Text =
-                    $"Form Factor: {details.FormFactor}W\n" +
+                    $"Form Factor: {details.FormFactor}\n" +
                     $"Max GPU Length: {details.MaxGPULength}mm\n" +
                     $"Max Cooler Height: {details.MaxCoolerHeight}mm\n" +
                     $"Fans Included?: {details.FansIncluded}\n";
