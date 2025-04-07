@@ -14,7 +14,6 @@ namespace OODProject
         public int CoolerMaxTDP { get; set; }
         public string MBPlatform { get; set; }
         public string MBFormFactor { get; set; }
-        public int MBMaxMemoryCapacity { get; set; }
         public string MBMemoryType { get; set; }
         public int GPULength { get; set; }
         public int GPUPsuReq { get; set; }

@@ -393,5 +393,86 @@ namespace OODProject
                 }
             }    
         }
+
+        #region Store Current PC Build in CurrentBuild class
+        private CurrentBuild GetCurrentBuild()
+        {
+            CurrentBuild currentBuild = new CurrentBuild();
+
+            using (var db = new PartData())
+            {
+                if(!string.IsNullOrEmpty(tblkCPU.Text))
+                {
+                    var cpu = db.CPUs.FirstOrDefault(c => c.Name == tblkCPU.Text);
+                    if(cpu != null)
+                    {
+                        currentBuild.CPUPlatform = cpu.Platform;
+                        currentBuild.CPUTdp = cpu.TDP;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkCooler.Text))
+                {
+                    var cooler = db.CPUCoolers.FirstOrDefault(c => c.Name == tblkCooler.Text);
+                    if (cooler != null)
+                    {
+                        currentBuild.CoolerMaxTDP = cooler.MaxTDP;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkMB.Text))
+                {
+                    var mb = db.Motherboards.FirstOrDefault(m => m.Name == tblkMB.Text);
+                    if (mb != null)
+                    {
+                        currentBuild.MBPlatform = mb.Platform;
+                        currentBuild.MBFormFactor = mb.FormFactor;
+                        currentBuild.MBMemoryType = mb.MemoryType;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkGPU.Text))
+                {
+                    var gpu = db.GPUs.FirstOrDefault(g => g.Name == tblkGPU.Text);
+                    if (gpu != null)
+                    {
+                        currentBuild.GPUPsuReq = gpu.PSURequirement;
+                        currentBuild.GPULength = gpu.GPULength;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkCase.Text))
+                {
+                    var pcCase = db.Cases.FirstOrDefault(c => c.Name == tblkCase.Text);
+                    if (pcCase != null)
+                    {
+                        currentBuild.CaseFormFactor = pcCase.FormFactor;
+                        currentBuild.CaseMaxGPULength = pcCase.MaxGPULength;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkPSU.Text))
+                {
+                    var psu = db.PSUs.FirstOrDefault(p => p.Name == tblkPSU.Text);
+                    if (psu != null)
+                    {
+                        currentBuild.PSUPower = psu.Wattage;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(tblkRAM.Text))
+                {
+                    var ram = db.RAMs.FirstOrDefault(r => r.Name == tblkRAM.Text);
+                    if (ram != null)
+                    {
+                        currentBuild.RAMCapacity = ram.Capacity;
+                        currentBuild.RAMType = ram.RAMType;
+                    }
+                }
+            }
+
+            return currentBuild;
+        }
+        #endregion
     }
 }
