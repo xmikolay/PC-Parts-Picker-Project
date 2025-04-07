@@ -244,6 +244,7 @@ namespace OODProject
 
             using (var db = new PartData())
             {
+                #region Setting Selected Parts To Text In Window
                 if (!string.IsNullOrEmpty(tblkCPU.Text))
                 {
                     selectedCPU = db.CPUs.FirstOrDefault(c => c.Name == tblkCPU.Text);
@@ -306,7 +307,9 @@ namespace OODProject
                 //{
                 //    Errors.Add("CPU Cooler not selected.");
                 //}
+                #endregion
 
+                #region Finding Errors for Compatibility
                 if (selectedCPU != null && selectedMB != null)
                 {
                     if (selectedCPU.Platform != selectedMB.Platform)
@@ -378,6 +381,7 @@ namespace OODProject
                         Errors.Add($"Motherboard ({selectedMB.Name}) memory type does not match RAM ({selectedRAM.Name}) memory type: {selectedMB.MemoryType} and {selectedRAM.RAMType}");
                     }
                 }
+                #endregion
 
                 if (Errors.Count > 0)
                 {
