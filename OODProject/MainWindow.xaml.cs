@@ -302,8 +302,9 @@ namespace OODProject
                 {
                     selectedCooler = db.CPUCoolers.FirstOrDefault(cc => cc.Name == tblkCooler.Text);
                 }
-                else
+                else if (selectedCPU.IncludesCooler)
                 {
+
                     Errors.Add("CPU Cooler not selected.");
                 }
 
@@ -313,6 +314,22 @@ namespace OODProject
                     {
                         Errors.Add($"CPU ({selectedCPU.Name}) and Motherboard ({selectedMB.Name}) socket types do not match: {selectedCPU.Platform} and {selectedMB.Platform}");
                     }
+                }
+
+                if (selectedCPU != null)
+                {
+                    if (selectedCPU.IncludesCooler == false)
+                    {
+                        if (selectedCooler == null)
+                        {
+                            Errors.Add()
+                        }
+
+                        if (selectedCPU.TDP > selectedCooler.MaxTDP)
+                        {
+                            Errors.Add($"CPU ({selectedCPU.Name}) TDP exceeds CPU Cooler ({selectedCooler.Name}) maximum TDP: {selectedCPU.TDP}W and {selectedCooler.MaxTDP}W");
+                        }
+                    }                   
                 }
 
                 if (Errors.Count > 0)
