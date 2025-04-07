@@ -71,8 +71,7 @@
         <TextBlock x:Name="tblkCooler" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Padding="5" Background="LightGray"/>
         <TextBlock x:Name="tblkCoolerPrice" Grid.Row="1" Grid.Column="2" Text="€" HorizontalAlignment="Center"/>
         <Button x:Name="btnCooler" Grid.Row="1" Grid.Column="3" Content="Browse" Click="btnCooler_Click"/>
-
-        <TextBlock Text="Compatibility" Foreground="Green" Grid.Row="9" Grid.Column="1" Margin="5" HorizontalAlignment="Center"/>
         <TextBlock x:Name="tblkTotalPrice" Grid.Row="9" Grid.Column="2" Text="Total: €" Margin="5" HorizontalAlignment="Center"/>
+        <Button x:Name="btnCompatibility" Grid.Column="1" Content="Check Compatibility" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="9" VerticalAlignment="Top" Width="150" Click="btnCompatibility_Click"/>
     </Grid>
 </Window>

@@ -21,10 +21,10 @@ namespace OODProject
 
     //Goals:
 
-    //Pass Part data from database, from MainWindow to ChoosePart.
-    //Have part data show in ChoosePart, show name and price of each part on right side, when clicked on more information shows up on left side.
+    //Pass Part data from database, from MainWindow to ChoosePart. X
+    //Have part data show in ChoosePart, show name and price of each part on right side, when clicked on more information shows up on left side. X
     //Allow user to sort by compatible parts in respect to rest of their system (e.g when user is choosing RAM, only show RAM that is compatible with chosen motherboard)
-    //Pass chosen data from ChoosePart to corresponding Textblock in MainWindow
+    //Pass chosen data from ChoosePart to corresponding Textblock in MainWindow. X
     //Have the compatibility checker option work in MainWindow (e.g AM5 CPU can only work with AM5 Motherboard)
     //Come up with some sort of extra function (current idea, make a main menu where you choose whether you want to create a build or view saved builds.)
 
@@ -51,6 +51,7 @@ namespace OODProject
             tblkTotalPrice.Text = $"Total: {0:c}";
         }
 
+        #region Getting Total Price
         private void GetTotal()
         {
             decimal cpuPrice = GetPrice(tblkCPUPrice.Text.Substring(1));
@@ -81,7 +82,9 @@ namespace OODProject
                 return 0; 
             }
         }
+        #endregion
 
+        #region Button Clicks
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
             ChoosePart choosePartWindow = new ChoosePart("CPU");
@@ -224,6 +227,59 @@ namespace OODProject
                 tblkStorage2Price.Text = $"{price:c}";
                 GetTotal();
             }
+        }
+        #endregion
+
+        private void btnCompatibility_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> Errors = new List<string>();
+
+            CPU selectedCPU;
+            Motherboard selectedMB;
+            RAM selectedRAM;
+            GPU selectedGPU;
+            Case selectedCase;
+            PSU selectedPSU;
+            CPUCooler selectedCooler;
+
+            using (var db = new PartData())
+            {
+                if (!string.IsNullOrEmpty(tblkCPU.Text))
+                {
+                    selectedCPU = db.CPUs.FirstOrDefault(c => c.Name == tblkCPU.Text);
+                }
+                else
+                {
+                    Errors.Add("CPU not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkMB.Text))
+                {
+                    selectedMB = db.Motherboards.FirstOrDefault(m => m.Name == tblkMB.Text);
+                }
+                else
+                {
+                    Errors.Add("Motherboard not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkRAM.Text))
+                {
+                    selectedRAM = db.RAMs.FirstOrDefault(r => r.Name == tblkRAM.Text);
+                }
+                else
+                {
+                    Errors.Add("Ram not selected.");
+                }
+
+                if (!string.IsNullOrEmpty(tblkGPU.Text))
+                {
+                    selectedMB = db.Motherboards.FirstOrDefault(m => m.Name == tblkMB.Text);
+                }
+                else
+                {
+                    Errors.Add("Motherboard not selected.");
+                }
+            }    
         }
     }
 }
