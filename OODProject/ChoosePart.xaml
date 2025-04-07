@@ -28,7 +28,7 @@
 
         <Label Grid.Column="1" Grid.Row="0" Content="Part Name" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="lblShowingComp" Grid.Column="1" Grid.Row="1" Content="Showing Compatible Parts" HorizontalAlignment="Center" Margin="180,3,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <CheckBox x:Name="chkbxShowComp" Grid.Column="1" Content="Show Compatible Parts" HorizontalAlignment="Center" Margin="0,8,180,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkbxShowComp" Grid.Column="1" Content="Show Compatible Parts" HorizontalAlignment="Center" Margin="0,8,180,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="True" Checked="chkbxShowComp_Checked" Unchecked="chkbxShowComp_Checked"/>
         
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
             Margin="10" Click="btnClose_Click" Grid.Row="1"/>

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity.Infrastructure;
 
 namespace OODProject
 {
@@ -79,12 +80,12 @@ namespace OODProject
             {
                 var cpuQuery = db.CPUs.AsQueryable();
 
-                if (!string.IsNullOrEmpty(currentBuild.MBPlatform))
+                if (!string.IsNullOrEmpty(currentBuild?.MBPlatform))
                 {
                     cpuQuery = cpuQuery
                         .Where(c => c.Platform ==  currentBuild.MBPlatform);
 
-
+                    lblShowingComp.Visibility = Visibility.Visible;
                 }
 
                 lbxPartsList.ItemsSource= cpuQuery.ToList();
@@ -93,37 +94,105 @@ namespace OODProject
 
             if (part == "CPU Cooler")
             {
-                var coolerStore = db.CPUCoolers.ToList();
-                lbxPartsList.ItemsSource = coolerStore;
+                var coolerQuery = db.CPUCoolers.AsQueryable();
+
+                if (!string.IsNullOrEmpty(currentBuild.CPUTdp.ToString())) 
+                { 
+                    coolerQuery = coolerQuery
+                        .Where(c => c.MaxTDP >= currentBuild.CPUTdp);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = coolerQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
             if (part == "Motherboard")
             {
-                var mbStore = db.Motherboards.ToList();
+                var mbQuery = db.Motherboards.AsQueryable();
 
-                lbxPartsList.ItemsSource = mbStore;
+                if (!string.IsNullOrEmpty(currentBuild.CPUPlatform))
+                {
+                    mbQuery = mbQuery
+                        .Where(m => m.Platform == currentBuild.CPUPlatform);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                else if (!string.IsNullOrEmpty(currentBuild.CaseFormFactor))
+                {
+                    mbQuery = mbQuery
+                        .Where(m => m.FormFactor == currentBuild.CaseFormFactor);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                else if (!string.IsNullOrEmpty(currentBuild.RAMType))
+                {
+                    mbQuery = mbQuery
+                        .Where(m => m.MemoryType == currentBuild.RAMType);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = mbQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
             if (part == "RAM")
             {
-                var ramStore = db.RAMs.ToList();
-                lbxPartsList.ItemsSource = ramStore;
+                var ramQuery = db.RAMs.AsQueryable();
+
+                if (!string.IsNullOrEmpty(currentBuild.MBMemoryType))
+                {
+                    ramQuery = ramQuery
+                        .Where(r => r.RAMType == currentBuild.MBMemoryType);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = ramQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
             if (part == "GPU")
             {
-                var gpuStore = db.GPUs.ToList();
-                lbxPartsList.ItemsSource = gpuStore;
+                var gpuQuery = db.GPUs.AsQueryable();
+
+                if (!string.IsNullOrEmpty(currentBuild.CaseMaxGPULength.ToString()))
+                {
+                    gpuQuery = gpuQuery
+                        .Where(g => g.GPULength <= currentBuild.CaseMaxGPULength);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                if (!string.IsNullOrEmpty(currentBuild.PSUPower.ToString()))
+                {
+                    gpuQuery = gpuQuery
+                        .Where(g => g.PSURequirement <= currentBuild.PSUPower);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = gpuQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
             if (part == "PSU")
             {
-                var psuStore = db.PSUs.ToList();
-                lbxPartsList.ItemsSource = psuStore;
+                var psuQuery = db.PSUs.AsQueryable();
+
+                if (!string.IsNullOrEmpty(currentBuild.GPUPsuReq.ToString()))
+                {
+                    psuQuery = psuQuery
+                        .Where(p => p.Wattage <= currentBuild.CaseMaxGPULength);
+
+                    lblShowingComp.Visibility = Visibility.Visible;
+                }
+
+                lbxPartsList.ItemsSource = psuQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";
             }
 
@@ -139,6 +208,11 @@ namespace OODProject
                 var storageStore = db.Storages.ToList();
                 lbxPartsList.ItemsSource = storageStore;
                 lbxPartsList.DisplayMemberPath = "Name";
+            }
+
+            if (currentBuild != null) 
+            {
+                chkbxShowComp.Visibility = Visibility.Visible;
             }
         }
 
@@ -374,6 +448,47 @@ namespace OODProject
                 }
             }
             #endregion
+        }
+
+        private void chkbxShowComp_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkbxShowComp.IsChecked == true)
+            {
+                Window_Loaded(sender, e);
+            }
+            else
+            {
+                lblShowingComp.Visibility = Visibility.Collapsed;
+
+                switch (part)
+                {
+                    case "CPU":
+                        lbxPartsList.ItemsSource = db.CPUs.ToList();
+                        break;
+                    case "Motherboard":
+                        lbxPartsList.ItemsSource = db.Motherboards.ToList();
+                        break;
+                    case "RAM":
+                        lbxPartsList.ItemsSource = db.RAMs.ToList();
+                        break;
+                    case "GPU":
+                        lbxPartsList.ItemsSource = db.GPUs.ToList();
+                        break;
+                    case "PSU":
+                        lbxPartsList.ItemsSource = db.PSUs.ToList();
+                        break;
+                    case "CPU Cooler":
+                        lbxPartsList.ItemsSource = db.CPUCoolers.ToList();
+                        break;
+                    case "Case":
+                        lbxPartsList.ItemsSource = db.Cases.ToList();
+                        break;
+                    case "Storage":
+                        lbxPartsList.ItemsSource = db.Storages.ToList();
+                        break;
+                }
+                lbxPartsList.DisplayMemberPath = "Name";
+            }
         }
     }
 }

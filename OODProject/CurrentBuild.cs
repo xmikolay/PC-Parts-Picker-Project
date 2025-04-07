@@ -20,7 +20,6 @@ namespace OODProject
         public int CaseMaxGPULength { get; set; }
         public string CaseFormFactor { get; set; }
         public int PSUPower { get; set; }
-        public int RAMCapacity { get; set; }
         public string RAMType { get; set; } 
     }
 }
