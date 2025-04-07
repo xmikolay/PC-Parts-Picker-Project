@@ -80,6 +80,7 @@
     <Compile Include="ChoosePart.xaml.cs">
       <DependentUpon>ChoosePart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CurrentBuild.cs" />
     <Compile Include="GenericPart.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
