@@ -30,6 +30,7 @@ namespace OODProject
 
     public partial class MainWindow : Window
     {
+        //Initialising database and current build class
         PartData db = new PartData();
         CurrentBuild currentBuild = new CurrentBuild();
 
@@ -40,6 +41,7 @@ namespace OODProject
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Giving default values for all price text blocks
             tblkCPUPrice.Text = $"{0:c}";
             tblkCoolerPrice.Text = $"{0:c}";
             tblkMBPrice.Text = $"{0:c}";
@@ -53,8 +55,11 @@ namespace OODProject
         }
 
         #region Getting Total Price
+
+        //Method to get total price of the build by adding all the parts prices
         private void GetTotal()
         {
+            //Assigning variables as decimal after using GetPrice method to get the price from the text block
             decimal cpuPrice = GetPrice(tblkCPUPrice.Text.Substring(1));
             decimal cpuCoolerPrice = GetPrice(tblkCoolerPrice.Text.Substring(1));
             decimal mbPrice = GetPrice(tblkMBPrice.Text.Substring(1));
@@ -65,12 +70,15 @@ namespace OODProject
             decimal storage1Price = GetPrice(tblkStorage1Price.Text.Substring(1));
             decimal storage2Price = GetPrice(tblkStorage2Price.Text.Substring(1));
 
+            //Adding all variables to get total
             decimal total = cpuPrice + cpuCoolerPrice + mbPrice + ramPrice + gpuPrice + psuPrice + casePrice + storage1Price + storage2Price;
 
+            //Displaying total
             tblkTotalPrice.Text = $"Total: {total:c}";
            //decimal test = GetPrice(tblkCPUPrice.Text);
         }
 
+        //GetPrice method to convert the string from the text block to decimal
         private decimal GetPrice(string textBlock)
         {
             decimal price = 0;
@@ -86,19 +94,29 @@ namespace OODProject
         #endregion
 
         #region Button Clicks
+
+        //A lot of the button clicks are the same, so I will just explain one of them
         private void btnCPU_Click(object sender, RoutedEventArgs e)
         {
-            CurrentBuild currentBuild = GetCurrentBuild();
-            ChoosePart choosePartWindow = new ChoosePart("CPU", currentBuild);
-            choosePartWindow.ShowDialog();
+            CurrentBuild currentBuild = GetCurrentBuild(); //Referencing GetCurrentBuild method
 
+            //Once the button is clicked it passes 2 values to the ChoosePart window: The part name, and current build values used for filtering
+            ChoosePart choosePartWindow = new ChoosePart("CPU", currentBuild); 
+            choosePartWindow.ShowDialog(); //Shows window
+
+            //If add button is clicked in choose part window, the window returns a DialogResult of true
+            //No outcome if Choose part window is closed
             if (choosePartWindow.DialogResult == true)
             {
+                //Setting the name and price of the selected part in choose part window to variables
                 string name = choosePartWindow.SelectedCpuName;
                 decimal price = choosePartWindow.SelectedCpuPrice;
 
+                //Setting those variables to the text blocks in the main window
                 tblkCPU.Text = name;
                 tblkCPUPrice.Text = $"{price:c}";
+
+                //Calling GetTotal method to update total after each successfull part selection
                 GetTotal();
             }
         }
@@ -238,10 +256,13 @@ namespace OODProject
         }
         #endregion
 
+        //Here is everything that happens when you press the Compatibility check button in the main window
         private void btnCompatibility_Click(object sender, RoutedEventArgs e)
         {
+            //Initialise list that will hold any errors
             List<string> Errors = new List<string>();
 
+            //Set some temporary part variables to null
             CPU selectedCPU = null;
             Motherboard selectedMB = null;
             RAM selectedRAM = null;
@@ -250,15 +271,23 @@ namespace OODProject
             PSU selectedPSU = null;
             CPUCooler selectedCooler = null;
 
+            //Using the database to get any part data needed for compatibility check
             using (var db = new PartData())
             {
                 #region Setting Selected Parts To Text In Window
+
+                //Just like the button clicks, all these are mostly the same so I will just explain one
+                //Storage is not included in any sort of compatibility check since all the parts that I have in the database are compatible with all storage options.
+
+                //Checks if part text block is not empty
                 if (!string.IsNullOrEmpty(tblkCPU.Text))
                 {
+                    //If its not empty, assign previously created variable to the first part in the database that matches the text in the text block
                     selectedCPU = db.CPUs.FirstOrDefault(c => c.Name == tblkCPU.Text);
                 }
                 else
                 {
+                    //Else add an error to the error list, telling the user that they have not yet selected a part
                     Errors.Add("CPU not selected.");
                 }
 
@@ -318,10 +347,16 @@ namespace OODProject
                 #endregion
 
                 #region Finding Errors for Compatibility
+
+                //This is where all the compatibility checks are done for the button, if any of them fail, an error is added to the list
+
+                //If the CPU and Motherboard are not null (meaning they have been selected).....
                 if (selectedCPU != null && selectedMB != null)
                 {
+                    //Then check if the CPU and Motherboard socket types dont match
                     if (selectedCPU.Platform != selectedMB.Platform)
                     {
+                        //If they dont, add an error to the list
                         Errors.Add($"CPU ({selectedCPU.Name}) and Motherboard ({selectedMB.Name}) socket types do not match: {selectedCPU.Platform} and {selectedMB.Platform}");
                     }
                 }
@@ -338,21 +373,28 @@ namespace OODProject
                 //    }
                 //}
 
+                //Check if CPU is selected
                 if (selectedCPU != null)
                 {
+                    //If it is, check if Cooler is selected 
                     if (selectedCooler != null)
                     {
+                        //If it is, check if the CPU TDP is greater than the Cooler max TDP
                         if (selectedCPU.TDP > selectedCooler.MaxTDP)
                         {
+                            //If it is, add an error to the list
                             Errors.Add($"CPU ({selectedCPU.Name}) TDP exceeds CPU Cooler ({selectedCooler.Name}) maximum TDP: {selectedCPU.TDP}W and {selectedCooler.MaxTDP}W");
                         }
                     }
+                    //Else if the cooler is not selected, check if the CPU doesnt include a cooler
                     else if (selectedCPU.IncludesCooler != true)
                     {
+                        //If it doesnt, add an error to the list
                         Errors.Add($"CPU {selectedCPU.Name} does not include a cooler, please select one.");
                     }
                 }
 
+                //Checks if the selected case allows for the selected gpu length
                 if (selectedGPU != null && selectedCase != null)
                 {
                     if (selectedCase.MaxGPULength < selectedGPU.GPULength)
@@ -361,6 +403,7 @@ namespace OODProject
                     }
                 }
 
+                //Checks if the selected case supports the selected motherboard form factor
                 if (selectedMB != null && selectedCase != null)
                 {
                     if (selectedCase.FormFactor != selectedMB.FormFactor)
@@ -369,6 +412,7 @@ namespace OODProject
                     }
                 }
 
+                //Checks if the selected GPU power requirement is greater than the selected PSU wattage
                 if (selectedGPU != null && selectedPSU != null)
                 {
                     if (selectedGPU.PSURequirement > selectedPSU.Wattage)
@@ -377,6 +421,8 @@ namespace OODProject
                     }
                 }
 
+                //Checks if the selected Motherboard max memory capacity is less than the selected RAM capacity,
+                //and if the selected motherboard memory type is the same as the selected RAM type
                 if (selectedRAM != null && selectedMB != null)
                 {
                     if (selectedMB.MaxMemoryCapacity < selectedRAM.Capacity)
@@ -391,6 +437,7 @@ namespace OODProject
                 }
                 #endregion
 
+                //If there are any errors in the list, show them to the user in a message box, if not show a success message in message box
                 if (Errors.Count > 0)
                 {
                     MessageBox.Show(string.Join(Environment.NewLine, Errors), "Compatibility Errors", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -403,13 +450,18 @@ namespace OODProject
         }
 
         #region Store Current PC Build in CurrentBuild class
+
+        //Method to store compatibility information about selected parts, and then to pass that information to CurrentBuild class
         private CurrentBuild GetCurrentBuild()
         {
+            //Initialise current build class
             CurrentBuild currentBuild = new CurrentBuild();
 
+            //Using the database to get any part data needed for compatibility check
             using (var db = new PartData())
             {
-                if(!string.IsNullOrEmpty(tblkCPU.Text))
+                //If cpu text block is not empty, assign the CPU platform and TDP to corresponding variables in the current build class
+                if (!string.IsNullOrEmpty(tblkCPU.Text))
                 {
                     var cpu = db.CPUs.FirstOrDefault(c => c.Name == tblkCPU.Text);
                     if(cpu != null)
@@ -419,6 +471,7 @@ namespace OODProject
                     }
                 }
 
+                //If cooler text block is not empty, assign the cooler max TDP to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkCooler.Text))
                 {
                     var cooler = db.CPUCoolers.FirstOrDefault(c => c.Name == tblkCooler.Text);
@@ -428,6 +481,7 @@ namespace OODProject
                     }
                 }
 
+                //If motherboard text block is not empty, assign the platform, form factor and memory type to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkMB.Text))
                 {
                     var mb = db.Motherboards.FirstOrDefault(m => m.Name == tblkMB.Text);
@@ -439,6 +493,7 @@ namespace OODProject
                     }
                 }
 
+                //If gpu text block is not empty, assign the gpu power requirement and gpu length to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkGPU.Text))
                 {
                     var gpu = db.GPUs.FirstOrDefault(g => g.Name == tblkGPU.Text);
@@ -449,6 +504,7 @@ namespace OODProject
                     }
                 }
 
+                //If cooler text block is not empty, assign the cooler max TDP to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkCase.Text))
                 {
                     var pcCase = db.Cases.FirstOrDefault(c => c.Name == tblkCase.Text);
@@ -459,6 +515,7 @@ namespace OODProject
                     }
                 }
 
+                //If psu text block is not empty, assign the psu wattage to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkPSU.Text))
                 {
                     var psu = db.PSUs.FirstOrDefault(p => p.Name == tblkPSU.Text);
@@ -468,6 +525,7 @@ namespace OODProject
                     }
                 }
 
+                //If ram text block is not empty, assign the ram type to corresponding variables current build class
                 if (!string.IsNullOrEmpty(tblkRAM.Text))
                 {
                     var ram = db.RAMs.FirstOrDefault(r => r.Name == tblkRAM.Text);
@@ -478,15 +536,26 @@ namespace OODProject
                 }
             }
 
+            //Return information about the current build
             return currentBuild;
         }
         #endregion
 
         #region Buttons to remove Part Selections
+
+        //These are all buttons that remove each corresponding part from selection
+        //The buttons are all the same so i will just explain one
+
+        //Button to remove CPU selection
         private void btnRemoveCPU_Click(object sender, RoutedEventArgs e)
         {
+            //Set the name text block to null
             tblkCPU.Text = null;
+
+            //Set the price text block to 0
             tblkCPUPrice.Text = $"{0:c}";
+
+            //Update the total price after removing part
             GetTotal();
         }
 

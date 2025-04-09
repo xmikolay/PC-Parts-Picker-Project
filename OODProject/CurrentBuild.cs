@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace OODProject
 {
+    //This class holds important information about the current build that is used for compatibility checks and filtering in MainWindow and ChoosePart
+    //It takes smaller bits of information about each part from the database.
     public class CurrentBuild
     {
         public string CPUPlatform { get; set; }

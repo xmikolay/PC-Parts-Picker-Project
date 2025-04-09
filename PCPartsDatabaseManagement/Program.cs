@@ -7,12 +7,15 @@ using OODProject;
 
 namespace PCPartsDatabaseManagement
 {
+    //This is used to create the database and seed it with data that i
+    //gathered from the internet (with the help of ai to speed up the process)
     internal class Program
     {
         static void Main(string[] args)
         {
             PartData db = new PartData();
 
+            //Main code with all the database data
             #region Create Database
 
             //using (db)
@@ -179,6 +182,7 @@ namespace PCPartsDatabaseManagement
             //}
             #endregion
 
+            //Only to be used if for some reason the seeding (id's) is incorrect
             #region Use if seeding is incorrect
             //Using this to Clear tables after incorrect seeding or changing data
 
