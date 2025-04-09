@@ -40,7 +40,6 @@
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="MinHeight" Value="32"></Setter>
-            <Setter Property="Text" Value="Not Selected..."></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="Padding" Value="0,6,0,0"></Setter>

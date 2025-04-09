@@ -23,15 +23,16 @@ namespace OODProject
 
     //Pass Part data from database, from MainWindow to ChoosePart. X
     //Have part data show in ChoosePart, show name and price of each part on right side, when clicked on more information shows up on left side. X
-    //Allow user to sort by compatible parts in respect to rest of their system (e.g when user is choosing RAM, only show RAM that is compatible with chosen motherboard)
+    //Allow user to sort by compatible parts in respect to rest of their system (e.g when user is choosing RAM, only show RAM that is compatible with chosen motherboard) X
     //Pass chosen data from ChoosePart to corresponding Textblock in MainWindow. X
-    //Have the compatibility checker option work in MainWindow (e.g AM5 CPU can only work with AM5 Motherboard)
+    //Have the compatibility checker option work in MainWindow (e.g AM5 CPU can only work with AM5 Motherboard) X
     //Come up with some sort of extra function (current idea, make a main menu where you choose whether you want to create a build or view saved builds.)
 
     public partial class MainWindow : Window
     {
         PartData db = new PartData();
-        
+        CurrentBuild currentBuild = new CurrentBuild();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -478,6 +479,71 @@ namespace OODProject
             }
 
             return currentBuild;
+        }
+        #endregion
+
+        #region Buttons to remove Part Selections
+        private void btnRemoveCPU_Click(object sender, RoutedEventArgs e)
+        {
+            tblkCPU.Text = null;
+            tblkCPUPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveCooler_Click(object sender, RoutedEventArgs e)
+        {
+            tblkCooler.Text = null;
+            tblkCoolerPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveMB_Click(object sender, RoutedEventArgs e)
+        {
+            tblkMB.Text = null;
+            tblkMBPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveRAM_Click(object sender, RoutedEventArgs e)
+        {
+            tblkRAM.Text = null;
+            tblkRAMPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveGPU_Click(object sender, RoutedEventArgs e)
+        {
+            tblkGPU.Text = null;
+            tblkGPUPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemovePSU_Click(object sender, RoutedEventArgs e)
+        {
+            tblkPSU.Text = null;
+            tblkPSUPrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveCase_Click(object sender, RoutedEventArgs e)
+        {
+            tblkCase.Text = null;
+            tblkCasePrice.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveStorage1_Click(object sender, RoutedEventArgs e)
+        {
+            tblkStorage1.Text = null;
+            tblkStorage1Price.Text = $"{0:c}";
+            GetTotal();
+        }
+
+        private void btnRemoveStorage2_Click(object sender, RoutedEventArgs e)
+        {
+            tblkStorage2.Text = null;
+            tblkStorage2Price.Text = $"{0:c}";
+            GetTotal();
         }
         #endregion
     }
