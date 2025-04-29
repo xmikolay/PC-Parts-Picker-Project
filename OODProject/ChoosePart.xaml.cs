@@ -23,6 +23,8 @@ namespace OODProject
     public partial class ChoosePart : Window
     {
         #region Selected Part Variables
+
+        //Creating variables to hold the selected part information
         public string SelectedCpuName { get; private set; }
         public decimal SelectedCpuPrice { get; private set; }
 
@@ -51,8 +53,10 @@ namespace OODProject
         public decimal SelectedCPUCoolerPrice { get; private set; }
         #endregion
 
+        //Creating currentBuild variable with CurrentBuild class type
         private CurrentBuild currentBuild;
 
+        //Creating a type string variable to hold the part type passed on from the MainWindow button click
         private string part;
 
         PartData db = new PartData();
@@ -62,11 +66,14 @@ namespace OODProject
             InitializeComponent();
         }
 
+        //Main constructor which takes in button variable
         public ChoosePart(string button):this()
         {
+            //Setting part variable to data from button variable
             part = button;
         }
 
+        //Secondary constructor that references button variable from main constructor and gets information from MainWindow, passed into new CurrentBuild object
         public ChoosePart(string button, CurrentBuild build) : this(button)
         {
             currentBuild = build;
@@ -76,11 +83,16 @@ namespace OODProject
         {
             //if cpu button clicked - get cpu info from db
 
+            //Bunch of If statements for showing compatible parts when choosing a part. Will only explain one since theyre roughly the same.
             #region Filtering Compatible Parts...
+
+            //Checks if part is CPU,
             if (part == "CPU")
             {
+                //If so, it queries the database for CPUs
                 var cpuQuery = db.CPUs.AsQueryable();
 
+                //Check if motherboard platform variable in the CurrentBuild class is not null or empty
                 if (!string.IsNullOrEmpty(currentBuild.MBPlatform))
                 {
                     cpuQuery = cpuQuery
