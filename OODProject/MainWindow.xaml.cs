@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace OODProject
 {
@@ -615,5 +616,31 @@ namespace OODProject
             GetTotal();
         }
         #endregion
+
+        private void btnSaveBuild_Click(object sender, RoutedEventArgs e)
+        {
+            string filePath = "savedbuilds.csv";
+            bool fileExists = File.Exists(filePath);
+
+            using (StreamWriter sw = new StreamWriter(filePath, true))
+            {
+                if (!fileExists)
+                {
+                    sw.WriteLine("CPU,CPUPrice,CPUCooler,CPUCoolerPrice,Motherboard,MotherboardPrice,RAM,RAMPrice,GPU,GPUPrice,PSU,PSUPrice,Case,CasePrice,Storage1,Storage1Price,Storage2,Storage2Price,TotalPrice");
+
+                    sw.WriteLine($"{tblkCPU.Text},{tblkCPUPrice.Text.Replace("$", "")}," +
+                     $"{tblkCooler.Text},{tblkCoolerPrice.Text.Replace("$", "")}," +
+                     $"{tblkMB.Text},{tblkMBPrice.Text.Replace("$", "")}," +
+                     $"{tblkRAM.Text},{tblkRAMPrice.Text.Replace("$", "")}," +
+                     $"{tblkGPU.Text},{tblkGPUPrice.Text.Replace("$", "")}," +
+                     $"{tblkPSU.Text},{tblkPSUPrice.Text.Replace("$", "")}," +
+                     $"{tblkCase.Text},{tblkCasePrice.Text.Replace("$", "")}," +
+                     $"{tblkStorage1.Text},{tblkStorage1Price.Text.Replace("$", "")}," +
+                     $"{tblkStorage2.Text},{tblkStorage2Price.Text.Replace("$", "")}," +
+                     $"{tblkTotalPrice.Text.Replace("Total: $", "")}");
+                }
+                MessageBox.Show("Build Saved!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 }

@@ -33,9 +33,9 @@ namespace OODProject
 
         private void savedBuildsBtn_Click(object sender, RoutedEventArgs e)
         {
-            //SavedBuildsWindow savedBuildsWindow = new SavedBuildsWindow();
-            //savedBuildsWindow.Show();
-            //this.Close();
+            SavedBuildsWindow savedBuildsWindow = new SavedBuildsWindow();
+            savedBuildsWindow.Show();
+            this.Close();
         }
     }
 }
