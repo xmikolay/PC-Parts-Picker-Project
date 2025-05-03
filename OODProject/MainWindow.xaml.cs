@@ -617,30 +617,50 @@ namespace OODProject
         }
         #endregion
 
+        #region Button To save builds
         private void btnSaveBuild_Click(object sender, RoutedEventArgs e)
         {
+            //Set filepath and set a bool value to check if the file exists
             string filePath = "savedbuilds.csv";
             bool fileExists = File.Exists(filePath);
 
+            //Dont let the user save if any of these are empty besides the storage
+            if (string.IsNullOrWhiteSpace(tblkCPU.Text) || string.IsNullOrWhiteSpace(tblkCooler.Text) || string.IsNullOrWhiteSpace(tblkMB.Text) || string.IsNullOrWhiteSpace(tblkRAM.Text) || string.IsNullOrWhiteSpace(tblkGPU.Text) || string.IsNullOrWhiteSpace(tblkPSU.Text) || string.IsNullOrWhiteSpace(tblkCase.Text))
+            {
+                MessageBox.Show("Please complete the build before saving.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             using (StreamWriter sw = new StreamWriter(filePath, true))
             {
+                //Create headers only when file doesnt exist
                 if (!fileExists)
-                {
-                    sw.WriteLine("CPU,CPUPrice,CPUCooler,CPUCoolerPrice,Motherboard,MotherboardPrice,RAM,RAMPrice,GPU,GPUPrice,PSU,PSUPrice,Case,CasePrice,Storage1,Storage1Price,Storage2,Storage2Price,TotalPrice");
-
-                    sw.WriteLine($"{tblkCPU.Text},{tblkCPUPrice.Text.Replace("$", "")}," +
-                     $"{tblkCooler.Text},{tblkCoolerPrice.Text.Replace("$", "")}," +
-                     $"{tblkMB.Text},{tblkMBPrice.Text.Replace("$", "")}," +
-                     $"{tblkRAM.Text},{tblkRAMPrice.Text.Replace("$", "")}," +
-                     $"{tblkGPU.Text},{tblkGPUPrice.Text.Replace("$", "")}," +
-                     $"{tblkPSU.Text},{tblkPSUPrice.Text.Replace("$", "")}," +
-                     $"{tblkCase.Text},{tblkCasePrice.Text.Replace("$", "")}," +
-                     $"{tblkStorage1.Text},{tblkStorage1Price.Text.Replace("$", "")}," +
-                     $"{tblkStorage2.Text},{tblkStorage2Price.Text.Replace("$", "")}," +
-                     $"{tblkTotalPrice.Text.Replace("Total: $", "")}");
+                {                                  
+                    sw.WriteLine("CPU,CPUPrice,CPUCooler,CPUCoolerPrice,Motherboard,MotherboardPrice,RAM,RAMPrice,GPU,GPUPrice,PSU,PSUPrice,Case,CasePrice,Storage1,Storage1Price,Storage2,Storage2Price,TotalPrice");                                       
                 }
+
+                //Write data
+                sw.WriteLine($"\"{tblkCPU.Text}\",\"{tblkCPUPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkCooler.Text}\",\"{tblkCoolerPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkMB.Text}\",\"{tblkMBPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkRAM.Text}\",\"{tblkRAMPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkGPU.Text}\",\"{tblkGPUPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkPSU.Text}\",\"{tblkPSUPrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkCase.Text}\",\"{tblkCasePrice.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkStorage1.Text}\",\"{tblkStorage1Price.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkStorage2.Text}\",\"{tblkStorage2Price.Text.Replace("€", "").Trim()}\"," +
+                     $"\"{tblkTotalPrice.Text.Replace("Total: €", "").Trim()}\"");
+
                 MessageBox.Show("Build Saved!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+        #endregion
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            var startupWindow = new StartupWindow();
+            startupWindow.Show();
+            this.Close();
         }
     }
 }

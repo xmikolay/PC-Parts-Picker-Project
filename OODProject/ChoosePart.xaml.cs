@@ -95,12 +95,14 @@ namespace OODProject
                 //Check if motherboard platform variable in the CurrentBuild class is not null or empty
                 if (!string.IsNullOrEmpty(currentBuild.MBPlatform))
                 {
+                    //Show only compatible cpus by filtering the query to match motherboard platform in currentbuild class
                     cpuQuery = cpuQuery
                         .Where(c => c.Platform ==  currentBuild.MBPlatform);
 
                     lblShowingComp.Visibility = Visibility.Visible;
                 }
 
+                //Set item source
                 lbxPartsList.ItemsSource= cpuQuery.ToList();
                 lbxPartsList.DisplayMemberPath = "Name";        
             }
@@ -253,12 +255,15 @@ namespace OODProject
 
         private void lbxPartsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Again these are all roughly the same, so only explaining one
             #region CPU Parts list
             if (lbxPartsList.SelectedItem is CPU selectedCPU)
             {
+                //Set variables for cpu name and price
                 SelectedCpuName = selectedCPU.Name;
                 SelectedCpuPrice = selectedCPU.Price;
 
+                //Get details based off selected cpus ID
                 var details = db.CPUs.FirstOrDefault(c => c.CpuID == selectedCPU.CpuID);
 
                 if (details == null)
@@ -266,6 +271,7 @@ namespace OODProject
                     return;
                 }
 
+                //Set details to the textboxes
                 PartName.Text = details.Name;
                 PartDescription.Text = 
                     $"Platform: {details.Platform}\n" +
@@ -275,6 +281,7 @@ namespace OODProject
                     $"TDP: {details.TDP} watts\n" +
                     $"Includes Cooler? {details.IncludesCooler}";
 
+                //Using BitmapImage for part images
                 if (!string.IsNullOrEmpty(details.Image))
                 {
                     PartImage.Source = new BitmapImage(new Uri(details.Image, UriKind.RelativeOrAbsolute));
@@ -477,10 +484,12 @@ namespace OODProject
         #region Checkbox for Part Filtering
         private void chkbxShowComp_Checked(object sender, RoutedEventArgs e)
         {
+            //Refers to the Window_Loaded method if the checkbox is ticked to show only compatible parts
             if (chkbxShowComp.IsChecked == true)
             {
                 Window_Loaded(sender, e);
             }
+            //Else just re-sets the listbox to show all available parts based on what type of part we want to search for
             else
             {
                 lblShowingComp.Visibility = Visibility.Collapsed;

@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:OODProject"
         mc:Ignorable="d"
         Title="SavedBuildsWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinHeight="350" MinWidth="700" MaxHeight="550" MaxWidth="900">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="Builds" Margin="10"></StackPanel>
-    </ScrollViewer>
+    <DockPanel>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" DockPanel.Dock="Bottom" Margin="10" Padding="5" Click="btnClose_Click" />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" DockPanel.Dock="Bottom">
+            <StackPanel x:Name="Builds" Margin="10"/>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

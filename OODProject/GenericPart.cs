@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OODProject
+    //This class is just used to part object properties
 {
     public class GenericPart
     {

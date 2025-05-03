@@ -37,5 +37,10 @@ namespace OODProject
             savedBuildsWindow.Show();
             this.Close();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

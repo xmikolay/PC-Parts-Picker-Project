@@ -67,6 +67,18 @@
             <Setter Property="FontSize" Value="25"></Setter>
         </Style>
 
+        <Style x:Key="StartUpExitButton" TargetType="Button">
+            <Setter Property="Background" Value="#576ca8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="15"></Setter>
+        </Style>
+
         <Style x:Key="StartUpLogo" TargetType="Label">
             <Setter Property="FontFamily" Value="Arial" />
             <Setter Property="FontWeight" Value="SemiBold"/>

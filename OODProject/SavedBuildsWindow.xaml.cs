@@ -26,23 +26,46 @@ namespace OODProject
             LoadSavedBuilds();
         }
 
+        //Method to load any saved builds from the CSV file
         private void LoadSavedBuilds()
         {
+            // Check if the file exists before trying to read it
             if (!File.Exists("savedbuilds.csv"))
                 return;
 
+            // Read all lines from the CSV file
             var lines = File.ReadAllLines("savedbuilds.csv");
+            //Returns early if the file is empty
             if (lines.Length <= 1) return;
 
             int buildNumber = 1;
 
+            // Skip the first line (header) and iterate through each line
             foreach (var line in lines.Skip(1))
             {
+                // Split the line by commas
                 var fields = line.Split(',');
 
+                // Check if the line has enough fields
                 if (fields.Length < 19) continue;
 
-                var buildHeader = new TextBlock
+                // Create labels for each part and populate them with data
+                string[] partLabels = new[]
+                {
+                    $"CPU: {fields[0].Trim('"')} - {fields[1].Trim('"')}",
+                    $"CPU Cooler: {fields[2].Trim('"')} - {fields[3].Trim('"')}",
+                    $"Motherboard: {fields[4].Trim('"')} - {fields[5].Trim('"')}",
+                    $"RAM: {fields[6].Trim('"')} - {fields[7].Trim('"')}",
+                    $"GPU: {fields[8].Trim('"')} - {fields[9].Trim('"')}",
+                    $"PSU: {fields[10].Trim('"')} - {fields[11].Trim('"')}",
+                    $"Case: {fields[12].Trim('"')} - {fields[13].Trim('"')}",
+                    $"Storage 1: {fields[14].Trim('"')} - {fields[15].Trim('"')}",
+                    $"Storage 2: {fields[16].Trim('"')} - {fields[17].Trim('"')}",
+                    $"Total: {fields[18].Trim('"')}"
+                };
+
+                // Create a new TextBlock for the build number and details
+                var title = new TextBlock
                 {
                     Text = $"Build {buildNumber}",
                     FontSize = 18,
@@ -50,21 +73,16 @@ namespace OODProject
                     Margin = new Thickness(0, 10, 0, 5)
                 };
 
-                var buildDetails = new StackPanel
+                // Create a StackPanel to hold the details of the build
+                var detailPanel = new StackPanel
                 {
                     Margin = new Thickness(10, 0, 0, 20)
                 };
 
-                string[] partNames = {
-                    "CPU", "CPU Cooler", "Motherboard", "RAM", "GPU", "PSU", "Case", "Storage 1", "Storage 2", "Total"
-                };
-
-                for (int i = 0; i < partNames.Length; i++)
+                // Add each part label to the detail panel
+                foreach (var part in partLabels)
                 {
-                    string part = i < 9 ? $"{partNames[i]}: {fields[i * 2]} - {fields[i * 2 + 1]}" :
-                                          $"{partNames[i]}: {fields[18]}";
-
-                    buildDetails.Children.Add(new TextBlock
+                    detailPanel.Children.Add(new TextBlock
                     {
                         Text = part,
                         FontSize = 14,
@@ -72,34 +90,19 @@ namespace OODProject
                     });
                 }
 
-                Builds.Children.Add(buildHeader);
-                Builds.Children.Add(buildDetails);
+                // Add the title and detail panel to the main Builds StackPanel
+                Builds.Children.Add(title);
+                Builds.Children.Add(detailPanel);
 
                 buildNumber++;
             }
         }
-    }
 
-    public class SavedBuild
-    {
-        public string CPU { get; set; }
-        public string CPUPrice { get; set; }
-        public string CPUCooler { get; set; }
-        public string CPUCoolerPrice { get; set; }
-        public string Motherboard { get; set; }
-        public string MotherboardPrice { get; set; }
-        public string RAM { get; set; }
-        public string RAMPrice { get; set; }
-        public string GPU { get; set; }
-        public string GPUPrice { get; set; }
-        public string PSU { get; set; }
-        public string PSUPrice { get; set; }
-        public string Case { get; set; }
-        public string CasePrice { get; set; }
-        public string Storage1 { get; set; }
-        public string Storage1Price { get; set; }
-        public string Storage2 { get; set; }
-        public string Storage2Price { get; set; }
-        public string TotalPrice { get; set; }
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            var startupWindow = new StartupWindow();
+            startupWindow.Show();
+            this.Close();
+        }
     }
 }

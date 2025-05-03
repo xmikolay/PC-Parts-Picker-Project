@@ -19,6 +19,7 @@
 
         <Button x:Name="createBuildBtn" Content="Create Build" Style="{StaticResource StartUpButton}" HorizontalAlignment="Right" Margin="0,0,50,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Click="createBuildBtn_Click"/>
         <Button x:Name="savedBuildsBtn" Content="Saved Builds" Style="{StaticResource StartUpButton}" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Click="savedBuildsBtn_Click" />
+        <Button x:Name="btnExit" Content="Exit" Style="{StaticResource StartUpExitButton}" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top" Click="btnExit_Click" />
         <Label Content="PC Part Picker" Style="{StaticResource StartUpLogo}" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" />
     </Grid>
 </Window>
